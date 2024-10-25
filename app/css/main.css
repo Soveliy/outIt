@@ -3993,15 +3993,30 @@ ol {
 
 .menu__wrapper {
   position: relative;
-  overflow: hidden;
 }
 
 .header__menu-row {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
-@media (max-width: 1024px) {
-  .header__menu-row {
-    overflow: visible;
-  }
+
+.footer__button {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.main__bottom-item {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.menu__more-link svg {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.p-plus--is-showing-overflow .menu__more-link svg {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 }/*# sourceMappingURL=main.css.map */

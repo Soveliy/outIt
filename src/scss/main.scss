@@ -1464,12 +1464,20 @@ ol {
 
 .menu__wrapper {
   position: relative;
-  overflow: hidden;
 }
 .header__menu-row {
   position: relative;
-  overflow: hidden;
-  @include tablet {
-    overflow: visible;
-  }
+  overflow: visible;
+}
+.footer__button {
+  transition: 0.3s;
+}
+.main__bottom-item {
+  transition: 0.3s;
+}
+.menu__more-link svg {
+  transition: 0.3s;
+}
+.p-plus--is-showing-overflow .menu__more-link svg {
+  transform: rotate(180deg);
 }
