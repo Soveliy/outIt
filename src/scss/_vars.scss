@@ -1,0 +1,23 @@
+// если вы хотите использовать sass-переменные - удалите root
+// colors
+:root {
+  // base
+  --font-family: "Inter", sans-serif;
+  --content-width: 1170px;
+  --container-offset: 15px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+  // colors
+  --white: #ffffff;
+  --blue: #476BF0;
+  --blue-dark: #3956c0;
+  --blue-light: #EDF0FD;
+  --black: #252525;
+  --green: #1EBB77;
+  --green-dark: #178f5b;
+  --grey-dark: #808080;
+  --grey-light: #f9f9f9;
+  --red: #ee2f53;
+  --grey-input: #efefef;
+
+}

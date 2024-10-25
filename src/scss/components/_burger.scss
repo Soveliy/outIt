@@ -1,0 +1,51 @@
+.burger {
+  display: none;
+  @include tablet-big() {
+    display: flex;
+    align-items: center;
+    padding: 13px 30px;
+    border-radius: 10px;
+    background: var(--blue);
+  }
+  @include mobile {
+    padding: 13px;
+  }
+  &__icons {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      stroke: #fff;
+      stroke-width: 1.5px;
+      fill: none;
+      transition: 0.3s;
+    }
+  }
+  &__close-icon {
+    opacity: 0;
+  }
+  span {
+    margin-left: 11px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+    text-transform: uppercase;
+    color: var(--white);
+    @include mobile {
+      display: none;
+    }
+  }
+  &.js-active {
+    .burger__btn-icon {
+      opacity: 0;
+    }
+    .burger__close-icon {
+      opacity: 1;
+    }
+  }
+}

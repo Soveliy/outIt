@@ -1,0 +1,268 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__wrapper">
+      <div class="footer__for-user">
+        <p>Для пользователя</p>
+        <ul class="footer__list-info">
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">О совете</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Новости</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Объявления</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Деятельность</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Документы</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Обращения граждан</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Пресс-центр</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Контакты</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Информационные ресурсы</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__contacts">
+        <p>Контакты</p>
+        <div class="footer__contacts-content">
+          <div class="footer__contacts-item">
+            <svg class="footer__contacts-icon">
+              <use xlink:href="img/sprite.svg#geoloc"></use>
+            </svg>
+            <a href="#" class="footer__contacts-desc">Москва, ул. Карла Маркса, д. 37, корп. 1</a>
+          </div>
+          <div class="footer__contacts-item">
+            <svg class="footer__contacts-icon">
+              <use xlink:href="img/sprite.svg#phone"></use>
+            </svg>
+            <a href="tel:74958008070" class="footer__contacts-desc">+ 7 (495) 800 80 70</a>
+          </div>
+          <div class="footer__contacts-item">
+            <svg class="footer__contacts-icon">
+              <use xlink:href="img/sprite.svg#mail"></use>
+            </svg>
+            <a href="mailto:out_it@gmail.com" class="footer__contacts-desc">out_it@gmail.com</a>
+          </div>
+          <div class="footer__contacts-social">
+            <a href="#" class="footer__social-btn">
+              <svg class="footer__social-icon">
+                <use xlink:href="img/sprite.svg#vk"></use>
+              </svg>
+            </a>
+            <a href="#" class="footer__social-btn">
+              <svg class="footer__social-icon">
+                <use xlink:href="img/sprite.svg#telegram"></use>
+              </svg>
+            </a>
+            <a href="#" class="footer__social-btn">
+              <svg class="footer__social-icon">
+                <use xlink:href="img/sprite.svg#ok"></use>
+              </svg>
+            </a>
+            <a href="#" class="footer__social-btn">
+              <svg class="footer__social-icon">
+                <use xlink:href="img/sprite.svg#rutube"></use>
+              </svg>
+            </a>
+            <a href="#" class="footer__social-btn">
+              <svg class="footer__social-icon">
+                <use xlink:href="img/sprite.svg#youtube"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__feedback">
+        <p class="footer__feedback-desc">Обратная связь</p>
+        <p class="footer__feedback-text">Если у вас есть вопросы, задайте их через специальную форму</p>
+        <button class="footer__button footer__feedback-button modal-button" data-modal="modal2">
+          <svg class="footer__feedback-icon">
+            <use xlink:href="img/sprite.svg#write"></use>
+          </svg>
+          <span>Написать нам</span>
+        </button>
+      </div>
+    </div>
+    <div class="footer__copyright">
+      <div class="footer__copyright-content">
+        <div class="footer__copyright-item">
+          <a href="#" class="footer__copyright-link">Политика конфиденциальности</a>
+        </div>
+        <div class="footer__copyright-item">
+          <a href="#" class="footer__copyright-link">Карта сайта</a>
+        </div>
+      </div>
+      <p class="footer__copyright-desc">© 2024 Готовое решение «OUT IT: Сайт совета муниципальных образований». Все
+        права защищены.</p>
+    </div>
+  </div>
+</footer>
+</div>
+<div class="modal-overlay">
+  <div class="modal graph-modal">
+    <div class="graph-modal__container graph-modal__login" role="dialog" aria-modal="true"
+      data-graph-target="loginModal" class="login-modal">
+      <button class="btn-reset js-modal-close graph-modal__close" aria-label="Закрыть модальное окно"></button>
+      <div class="graph-modal__content">
+        <h2 class="graph-modal__title">Авторизация</h2>
+        <form class="login-form">
+          <div class="form__group">
+            <input type="email" placeholder=" " class="form__group-input input-email">
+            <label class="form__pseudoplaceholder" for="email">Email*</label>
+          </div>
+          <div class="form__group">
+            <input type="password" placeholder=" " class="form__group-input input-password">
+            <label class="form__pseudoplaceholder " for="password">Пароль*</label>
+            <div class="form__toggle" id=""></div>
+          </div>
+          <div class="form__links">
+            <a href="#" class="form__links-pas">Забыли пароль?</a>
+          </div>
+          <div class="form__group form__group-check">
+            <input type="checkbox" id="rememberMe" class="form__group-checkbox">
+            <label class="form__group-text" for="rememberMe">Запомнить меня</label>
+          </div>
+          <button class="login-btn" type="submit">Войти</button>
+        </form>
+        <p class="form__register">Если Вы впервые на сайте, пожалуйста, <a href="#" data-pass="modal"
+            class="form__register-link" id="registerLink" data-graph-path="registerModal">Зарегистрируйтесь</a></p>
+      </div>
+    </div>
+    <div class="graph-modal__container graph-modal__register" role="dialog" aria-modal="true"
+      data-graph-target="registerModal" id="registerModal">
+      <button class="btn-reset js-modal-close graph-modal__close" aria-label="Закрыть модальное окно"></button>
+      <div class="graph-modal__content">
+        <h2 class="graph-modal__title">Регистрация</h2>
+        <form id="registerForm" class="register-form">
+          <div class="form__group">
+            <input type="text" id="name" placeholder=" " class="form__group-input input-name">
+            <label class="form__pseudoplaceholder" for="name">ФИО*</label>
+          </div>
+          <div class="form__group">
+            <input type="tel" id="phone" placeholder=" " class="form__group-input input-tel">
+            <label class="form__pseudoplaceholder" for="phone">Телефон*</label>
+          </div>
+          <div class="form__group">
+            <input type="email" placeholder=" " class="form__group-input input-email">
+            <label class="form__pseudoplaceholder" for="email">Email*</label>
+          </div>
+          <div class="form__group">
+            <input type="password" placeholder=" " class="form__group-input input-password">
+            <label class="form__pseudoplaceholder" for="password">Пароль*</label>
+            <div class="form__toggle"></div>
+          </div>
+          <div class="form__group">
+            <input type="password" placeholder=" " class="form__group-input input-password-again">
+            <label class="form__pseudoplaceholder" for="password">Пароль еще раз*</label>
+            <div class="form__toggle"></div>
+          </div>
+          <div class="form__item">
+            <p class="form__item-text">Пароль должен быть не менее 8 и состоять из букв латинского алфавита (A-z),
+              арабских цифр (0-9) и специальных символов</p>
+          </div>
+          <div class="form__group form__group-check">
+            <input type="checkbox" id="rememberMe2" class="form__group-checkbox">
+            <div class="form__group-content">
+              <p class="form__desc">Я согласен с </p>
+              <a href="#" class="form__group-link">политикой конфиденциальности</a>
+            </div>
+          </div>
+          <button class="login-btn" type="submit">Зарегистрироваться</button>
+        </form>
+        <p class="form__register">У Вас уже есть аккаунт? <a href="#" class="form__register-link" id="loginLink"
+            data-graph-path="loginModal" data-pass="modal">Авторизоваться</a></p>
+      </div>
+    </div>
+    <div class="graph-modal__container graph-modal__city" data-graph-target="header__city">
+      <button class="btn-reset js-modal-close graph-modal__close" aria-label="Закрыть модальное окно"></button>
+      <div class="graph-modal__content">
+        <h2 class="graph-modal__title">Выберите город</h2>
+        <div class="city__search">
+          <input type="text" class="city__search-input" placeholder="Ваш город">
+          <label class="city__search-placeholder" for="text">Ваш город
+          </label>
+          <button class="city__search-button">
+            <svg class="city__search-icon">
+              <use xlink:href="img/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+        <a href="#" class="auto-detect-location city__search-geo">
+          <svg class="header__info-icon">
+            <use xlink:href="img/sprite.svg#geo"></use>
+          </svg>
+          <span>Определить автоматически</span>
+        </a>
+        <div class="city__list">
+          <ul>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Уфа</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Москва</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Санкт-Петербург</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Екатеринбург</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Краснодар</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Нижний Новгород</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Новосибирск</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Самара</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Челябинск</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

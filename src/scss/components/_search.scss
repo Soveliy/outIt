@@ -1,0 +1,173 @@
+.search {
+  &__button {
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    svg {
+      height: 20px;
+      width: 20px;
+      fill: none;
+      stroke-width: 1.6px;
+      stroke: var(--blue);
+    }
+  }
+  &__form {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 124px;
+    width: 0;
+    height: 48px;
+    width: calc(100% - 532px);
+
+    border-radius: 10px;
+    // padding: 4px 4px 4px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--white);
+    z-index: 10;
+    opacity: 0;
+    transition: 0.3s;
+    visibility: hidden;
+    &.js-active {
+      visibility: visible;
+      opacity: 1;
+    }
+    @include tablet-big {
+      width: calc(100% - 123px);
+    }
+    @include mobile {
+      left: 0;
+      width: 100%;
+    }
+  }
+  &__input {
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    padding: 10px 90px 10px 20px;
+    box-sizing: border-box;
+    height: 48px;
+    box-sizing: border-box;
+    width: 100%;
+    outline: 0;
+  }
+  &__to-search {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    width: 38px;
+    height: 38px;
+    background-color: var(--blue);
+    cursor: pointer;
+    transition: 0.3s;
+    @include hover {
+      background: var(--blue-dark);
+    }
+    svg {
+      width: 50%;
+      height: 50%;
+      stroke: #fff;
+      fill: none;
+    }
+  }
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    width: 38px;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 52px;
+    cursor: pointer;
+  }
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 3px);
+    max-height: 284px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    background: var(--white);
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: 0.3s;
+    pointer-events: none;
+    &.js-active {
+      opacity: 1;
+      transform: none;
+      pointer-events: all;
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 9px 10px;
+    box-sizing: border-box;
+    color: var(--black);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    transition: 0.3s;
+    @include hover {
+      color: var(--blue);
+    }
+    & + & {
+      margin-top: 2px;
+    }
+    b {
+      font-weight: 400;
+      color: var(--blue);
+    }
+    svg {
+      height: 16px;
+      width: 16px;
+      margin-right: 10px;
+      fill: none;
+      stroke: var(--grey-dark);
+    }
+  }
+  &__bgshadow {
+    position: fixed;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: 0.3s;
+    top: var(--headerHeight);
+
+    &.js-active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+  }
+  .simplebar-track.simplebar-vertical {
+    right: 10px;
+    width: 5px;
+  }
+  .simplebar-scrollbar {
+    width: 100%;
+    &::before {
+      width: 100%;
+      right: 0;
+      left: 0;
+      background-color: var(--grey-dark);
+    }
+  }
+}
