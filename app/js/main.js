@@ -5600,888 +5600,38 @@ class JustValidate {
 
 /***/ }),
 
-/***/ "./src/js/_components.js":
-/*!*******************************!*\
-  !*** ./src/js/_components.js ***!
-  \*******************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_slider_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/slider.js */ "./src/js/components/slider.js");
-/* harmony import */ var _components_modals_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/modals.js */ "./src/js/components/modals.js");
-/* harmony import */ var _components_calendar_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/calendar.js */ "./src/js/components/calendar.js");
-/* harmony import */ var _components_search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/search.js */ "./src/js/components/search.js");
-/* harmony import */ var _components_menu_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/menu.js */ "./src/js/components/menu.js");
-/* harmony import */ var _components_scroll_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/scroll.js */ "./src/js/components/scroll.js");
-/* harmony import */ var _components_burger_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/burger.js */ "./src/js/components/burger.js");
-/* harmony import */ var _components_valid_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/valid.js */ "./src/js/components/valid.js");
-
-
-
-
-
-
-
-
-
-/***/ }),
-
-/***/ "./src/js/components/burger.js":
-/*!*************************************!*\
-  !*** ./src/js/components/burger.js ***!
-  \*************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-const initMobileMenu = () => {
-  const burger = document.querySelector("[data-burger]");
-  const menu = document.querySelector(".mobile-menu");
-  const body = document.querySelector("body");
-  if (burger) {
-    burger.addEventListener("click", () => {
-      burger.classList.toggle("js-active");
-      menu.classList.toggle("js-active");
-      body.classList.toggle("js-hidden");
-    });
-  }
-};
-initMobileMenu();
-
-/***/ }),
-
-/***/ "./src/js/components/calendar.js":
-/*!***************************************!*\
-  !*** ./src/js/components/calendar.js ***!
-  \***************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-const monthNames = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-const calendarDays = document.getElementById("calendarDays");
-const prevYearButton = document.getElementById("prevYear");
-const nextYearButton = document.getElementById("nextYear");
-const prevYearDisplay = document.getElementById("prevYearDisplay");
-const currentYearDisplay = document.getElementById("currentYearDisplay");
-const nextYearDisplay = document.getElementById("nextYearDisplay");
-const calendarHeaderNext = document.getElementById("calendarHeaderNext");
-const customSelectTrigger = document.querySelector(".custom-select-trigger");
-const customOptions = document.querySelector(".custom-options");
-const options = document.querySelectorAll(".custom-option");
-const customArrow = document.querySelector(".custom-arrow");
-let currentDate = new Date();
-let currentYear = currentDate.getFullYear();
-let currentYear1 = currentDate.getFullYear();
-let currentMonth = currentDate.getMonth();
-let currentDay = currentDate.getDate();
-function renderCalendar(year, month) {
-  calendarDays.innerHTML = "";
-  const firstDay = new Date(year, month, 1);
-  const lastDay = new Date(year, month + 1, 0);
-  const daysInMonth = lastDay.getDate();
-  const prevMonthLastDay = new Date(year, month, 0).getDate();
-  const prevMonthDaysToShow = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1;
-  const dayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
-  dayNames.forEach(day => {
-    const dayElement = document.createElement("div");
-    dayElement.className = "day-name";
-    dayElement.textContent = day;
-    calendarDays.appendChild(dayElement);
-  });
-  for (let i = prevMonthLastDay - prevMonthDaysToShow + 1; i <= prevMonthLastDay; i++) {
-    const emptyCell = document.createElement("div");
-    emptyCell.className = "day faded";
-    emptyCell.textContent = i;
-    calendarDays.appendChild(emptyCell);
-  }
-  for (let i = 1; i <= daysInMonth; i++) {
-    const dayElement = document.createElement("div");
-    dayElement.className = "day";
-    dayElement.textContent = i;
-    const dayDate = new Date(year, month, i);
-    if (dayDate.getDay() === 0 || dayDate.getDay() === 6) {
-      dayElement.style.color = "red";
-    }
-    dayElement.addEventListener("click", () => {
-      currentDay = i;
-      highlightSelectedDay(dayElement);
-      console.log(`Selected date: ${currentYear}-${currentMonth + 1}-${currentDay}`);
-    });
-    if (i === currentDay && year === currentYear && month === currentMonth) {
-      dayElement.classList.add("selected");
-    }
-    calendarDays.appendChild(dayElement);
-  }
-  const totalCells = 42;
-  const currentCells = prevMonthDaysToShow + daysInMonth;
-  const nextDaysToShow = totalCells - currentCells;
-  for (let i = 1; i <= nextDaysToShow; i++) {
-    const nextDayElement = document.createElement("div");
-    nextDayElement.className = "day faded";
-    nextDayElement.textContent = i;
-    calendarDays.appendChild(nextDayElement);
-  }
-  updateYearDisplays(year);
-  updateCalendarHeaderVisibility(year);
-}
-function updateYearDisplays(year) {
-  prevYearDisplay.textContent = year - 1;
-  currentYearDisplay.textContent = year;
-  nextYearDisplay.textContent = year + 1;
-}
-function updateCalendarHeaderVisibility(year) {
-  calendarHeaderNext.style.display = currentYear1 < currentYear ? "flex" : "none";
-}
-function highlightSelectedDay(selectedElement) {
-  const allDays = document.querySelectorAll(".day");
-  allDays.forEach(day => day.classList.remove("selected"));
-  selectedElement.classList.add("selected");
-}
-customSelectTrigger.addEventListener("click", () => {
-  customOptions.classList.toggle("show");
-  customArrow.classList.toggle("rotate");
-});
-options.forEach(option => {
-  option.addEventListener("click", () => {
-    const value = option.getAttribute("data-value");
-    customSelectTrigger.textContent = option.textContent;
-    currentMonth = parseInt(value);
-    renderCalendar(currentYear, currentMonth);
-    options.forEach(opt => {
-      opt.classList.remove("selected");
-    });
-    option.classList.add("selected");
-    customOptions.classList.remove("show");
-    customArrow.classList.remove("rotate");
-  });
-});
-document.addEventListener("click", e => {
-  if (!customSelectTrigger.contains(e.target) && !customOptions.contains(e.target)) {
-    customOptions.classList.remove("show");
-    customArrow.classList.remove("rotate");
-  }
-});
-prevYearButton.addEventListener("click", () => {
-  currentYear1--;
-  renderCalendar(currentYear1, currentMonth);
-});
-nextYearButton.addEventListener("click", () => {
-  currentYear1++;
-  renderCalendar(currentYear1, currentMonth);
-});
-customSelectTrigger.textContent = monthNames[currentMonth];
-renderCalendar(currentYear, currentMonth);
-
-/***/ }),
-
-/***/ "./src/js/components/menu.js":
-/*!***********************************!*\
-  !*** ./src/js/components/menu.js ***!
-  \***********************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var priority_plus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! priority-plus */ "./node_modules/priority-plus/dist/priority-plus.esm.js");
-// const nextAll = (element) => {
-//   const nextElements = [];
-
-//   while (element.nextElementSibling) {
-//     nextElements.push(element.nextElementSibling);
-//     element = element.nextElementSibling;
-//   }
-
-//   return nextElements;
-// };
-
-// const menu = document.querySelector(".menu__list"),
-//   more = document.querySelector(".menu__more-link"),
-//   subMenu = document.querySelector(".menu-inside"),
-//   parent = document.querySelector(".menu__wrapper");
-
-// let windowWidth = window.innerWidth;
-// const contract = () => {
-//   let w = 0,
-//     outerWidth = parent.offsetWidth - 170;
-
-//   let menuItems = menu.querySelectorAll("li");
-
-//   for (let i = 0; i < menuItems.length; i++) {
-//     w += menuItems[i].offsetWidth;
-
-//     if (w > outerWidth) {
-//       let nextElements = nextAll(menuItems[i - 1]);
-
-//       let nextReverse = nextElements.reverse();
-
-//       nextReverse.forEach((el) => {
-//         el.remove();
-//         subMenu.prepend(el);
-//       });
-
-//       break;
-//     }
-//   }
-// };
-
-// const expand = () => {
-//   let w = 0,
-//     outerWidth = parent.offsetWidth - 170;
-
-//   let menuItems = menu.querySelectorAll("li");
-//   menuItems.forEach((el) => {
-//     w += el.offsetWidth;
-//   });
-
-//   let submenuItems = subMenu.querySelectorAll("li");
-//   for (let i = 0; i < submenuItems.length; i++) {
-
-//     w += submenuItems[i].offsetWidth;
-
-//     if (w > outerWidth) {
-//       let a = 0;
-
-//       while (a < i) {
-//         submenuItems[a].remove();
-//         menu.appendChild(submenuItems[a]);
-
-//         a++;
-//       }
-
-//       break;
-//     }
-//   }
-
-//   if (submenuItems.length === 1) {
-//     let lastOffset = submenuItems[submenuItems.length - 1].offsetWidth;
-
-//     if (menu.offsetWidth + lastOffset <= outerWidth) {
-//       submenuItems[submenuItems.length - 1].remove();
-//       menu.appendChild(submenuItems[submenuItems.length - 1]);
-//     }
-//   }
-// };
-
-// const checkActive = () => {
-//   if (subMenu.querySelectorAll("li").length) {
-//     more.classList.add("js-active");
-//   } else {
-//     more.classList.remove("js-active");
-//   }
-// };
-
-// contract();
-// checkActive();
-
-// window.addEventListener("resize", () => {
-//   window.innerWidth > windowWidth ? expand() : contract();
-//   windowWidth = window.innerWidth;
-//   checkActive();
-// });
-
-
-(0,priority_plus__WEBPACK_IMPORTED_MODULE_0__["default"])(document.querySelector(".menu__list"), {
-  innerToggleTemplate: `<div class="menu__more-link">Еще
-              <svg class="menu__link-icon" id="arrowIcon">
-                <use xlink:href="img/sprite.svg#arrow_down"></use>
-              </svg>
-            </div>`
-});
-
-/***/ }),
-
-/***/ "./src/js/components/modals.js":
-/*!*************************************!*\
-  !*** ./src/js/components/modals.js ***!
-  \*************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var graph_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graph-modal */ "./node_modules/graph-modal/src/graph-modal.js");
-
-const modal = new graph_modal__WEBPACK_IMPORTED_MODULE_0__["default"]();
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const loginModal = document.getElementById("loginModal");
-//   const registerModal = document.getElementById("registerModal");
-//   const cityModal = document.getElementsByClassName(".graph-modal__city");
-
-//   const citySearchInput = document.querySelector(".city__search-input");
-//   const citySuggestions = document.querySelector(".city__list ul");
-
-//   //
-
-//   const switchModals = (openModal, closeModal) => {
-//     closeModal.close();
-//     openModal.show();
-//   };
-
-//   citySearchInput.addEventListener("input", () => {
-//     const filter = citySearchInput.value.toLowerCase();
-//     const items = citySuggestions.getElementsByTagName("li");
-
-//     Array.from(items).forEach((item) => {
-//       const text = item.textContent.toLowerCase();
-//       item.style.display = text.includes(filter) ? "" : "none";
-//     });
-//   });
-//   //
-//   document.querySelector(".btn").addEventListener("click", () => {
-//     modal.open(cityModal);
-//   });
-
-//   //
-//   const cityItems = document.querySelectorAll(".city__list-item");
-//   if (cityItems.length > 0) {
-//     const removeClassActie = () => {
-//       cityItems.forEach((item) => {
-//         item.classList.remove("js-active");
-//       });
-//     };
-//     cityItems.forEach((item) => {
-//       item.addEventListener("click", () => {
-//         removeClassActie();
-//         item.classList.add("js-active");
-//         citySearchInput.value = item.querySelector("span").textContent;
-//       });
-//     });
-//   }
-
-//   //
-
-//   document.addEventListener("click", (e) => {
-//     if (
-//       e.target.closest(".js-modal-close") ||
-//       e.target.classList.contains("modal-overlay")
-//     ) {
-//       if (loginModal.classList.contains("is-open")) {
-//         loginModal.close();
-//       } else if (registerModal.classList.contains("is-open")) {
-//         registerModal.close();
-//       }
-//     }
-
-//     if (e.target.closest("#registerLink")) {
-//       e.preventDefault();
-//       switchModals(registerModal, loginModal);
-//     }
-
-//     if (e.target.closest("#registerLink2")) {
-//       e.preventDefault();
-//       switchModals(loginModal, registerModal);
-//     }
-
-//     if (e.target.closest(".form__toggle")) {
-//       const inputField = e.target
-//         .closest(".form__group")
-//         .querySelector(".form__group-input");
-//       const isPasswordVisible = inputField.type === "text";
-
-//       inputField.type = isPasswordVisible ? "password" : "text";
-
-//       const eyeIconUrl = isPasswordVisible
-//         ? 'url("../../img/eye-close.svg")'
-//         : 'url("../../img/eye-open.svg")';
-//       e.target.style.backgroundImage = eyeIconUrl;
-//     }
-//   });
-// });
-
-const cityItems = document.querySelectorAll(".city__list-item");
-if (cityItems.length > 0) {
-  const removeClassActie = () => {
-    cityItems.forEach(item => {
-      item.classList.remove("js-active");
-    });
-  };
-  cityItems.forEach(item => {
-    item.addEventListener("click", () => {
-      removeClassActie();
-      item.classList.add("js-active");
-      citySearchInput.value = item.querySelector("span").textContent;
-    });
-  });
-}
-const showPass = () => {
-  const btns = document.querySelectorAll(".form__toggle");
-  if (btns) {
-    btns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        const input = btn.previousElementSibling.previousElementSibling;
-        if (input.getAttribute("type") == "password") {
-          btn.classList.add("js-active");
-          input.setAttribute("type", "text");
-        } else {
-          btn.classList.remove("js-active");
-          input.setAttribute("type", "password");
-        }
-      });
-    });
-  }
-};
-showPass();
-
-/***/ }),
-
-/***/ "./src/js/components/scroll.js":
-/*!*************************************!*\
-  !*** ./src/js/components/scroll.js ***!
-  \*************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var simplebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simplebar */ "./node_modules/simplebar/dist/index.mjs");
-
-
-/***/ }),
-
-/***/ "./src/js/components/search.js":
-/*!*************************************!*\
-  !*** ./src/js/components/search.js ***!
-  \*************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// document.addEventListener("DOMContentLoaded", function () {
-//   const searchToggle = document.getElementById('search-toggle');
-//   const searchForm = document.getElementById('search-form');
-//   const searchInput = document.getElementById('search-input');
-//   const closeButton = document.getElementById('close-button');
-//   const searchDropdown = document.getElementById('search-dropdown');
-//   const menuList = document.querySelector('.menu__list');
-//   const searchOverlay = document.querySelector('.search-overlay');
-//   const body = document.body;
-//   const searchButtons = document.querySelector('.header__search-btn');
-//   searchToggle.addEventListener('click', function(event) {
-//       event.preventDefault();
-//       const isVisible = searchForm.style.display === 'flex';
-//       searchForm.style.display = isVisible ? 'none' : 'flex';
-//       menuList.style.display = isVisible ? 'flex' : 'none';
-//       searchToggle.style.display = isVisible ? 'flex' : 'none';
-//       if (!isVisible) {
-//           searchInput.focus();
-//           searchOverlay.style.display = 'flex';
-//           body.classList.add('no-scroll');
-//           if (window.innerWidth <= 1024) {
-//             searchButtons.style.display = 'none';
-//         } else {
-//           body.classList.remove('no-scroll');
-//           searchButtons.style.display = 'flex';
-//       }
-//       };
-//     });
-//   searchInput.addEventListener('input', function() {
-//       const query = searchInput.value.trim();
-//       closeButton.style.display = query ? 'flex' : 'none';
-//       if (query) {
-//         searchDropdown.classList.add('visible');
-//         searchDropdown.innerHTML = '';
-//         const results = [
-//             { text: 'Результат 1', icon: 'img/sprite.svg#search' },
-//             { text: 'Результат 2', icon: 'img/sprite.svg#search' },
-//             { text: 'Результат 3', icon: 'img/sprite.svg#search' },
-//             { text: 'Результат 1', icon: 'img/sprite.svg#search' },
-//             { text: 'Результат 2', icon: 'img/sprite.svg#search' },
-//             { text: 'Результат 3', icon: 'img/sprite.svg#search' },
-//             { text: 'Результат 1', icon: 'img/sprite.svg#search' },
-//             { text: 'Результат 2', icon: 'img/sprite.svg#search' },
-//             { text: 'Результат 3', icon: 'img/sprite.svg#search' },
-//         ];
-//           results.forEach(result => {
-//               const resultItem = document.createElement('div');
-//               resultItem.classList.add('search-result');
-//               resultItem.innerHTML = `<svg class="result-icon"><use xlink:href="${result.icon}"></use></svg>${result.text}`;
-//               searchDropdown.appendChild(resultItem);
-//           });
-//       }
-//   });
-// //   searchOverlay.addEventListener('click', function() {
-// //     searchForm.classList.remove('active');
-// //     searchOverlay.classList.remove('active');
-// // });
-//   searchOverlay.addEventListener('click', function() {
-//       closeSearch();
-//   });
-//   function closeSearch() {
-//     searchForm.style.display = 'none';
-//     searchToggle.style.display = 'flex';
-//     searchInput.value = '';
-//     searchOverlay.style.display = 'none';
-//     closeButton.style.display = 'none';
-//     searchDropdown.classList.remove('visible');
-//     body.classList.remove('no-scroll');
-//     searchButtons.style.display = 'flex';
-//   };
-// });
-
-const searchFunc = () => {
-  const btn = document.querySelector("[data-search-btn]");
-  const form = document.querySelector("[data-search-form]");
-  const input = document.querySelector("[data-search-input]");
-  const dropdown = document.querySelector("[data-search-dropdown]");
-  const close = document.querySelector("[data-search-close]");
-  const shadow = document.querySelector("[data-search-shadow]");
-  const body = document.querySelector("body");
-  const closeSearch = () => {
-    shadow.classList.remove("js-active");
-    form.classList.remove("js-active");
-    dropdown.classList.remove("js-active");
-    input.value = "";
-    body.classList.remove("js-hidden");
-    unlockPadding();
-  };
-  function lockPadding() {
-    let paddingOffset = window.innerWidth - document.body.offsetWidth + "px";
-    document.body.style.paddingRight = paddingOffset;
-  }
-  function unlockPadding() {
-    document.body.style.paddingRight = "0px";
-  }
-  window.addEventListener("keydown", event => {
-    if (event.key === "Escape" && form.classList.contains("js-active")) {
-      closeSearch();
-    }
-  });
-  if (btn) {
-    btn.addEventListener("click", () => {
-      form.classList.toggle("js-active");
-      shadow.classList.toggle("js-active");
-      lockPadding();
-      body.classList.add("js-hidden");
-    });
-  }
-  if (input) {
-    input.addEventListener("input", () => {
-      if (input.value.length > 2) {
-        dropdown.classList.add("js-active");
-      } else {
-        dropdown.classList.remove("js-active");
-      }
-    });
-  }
-  if (shadow) {
-    shadow.addEventListener("click", () => {
-      closeSearch();
-    });
-    close.addEventListener("click", () => {
-      closeSearch();
-    });
-  }
-};
-searchFunc();
-
-/***/ }),
-
-/***/ "./src/js/components/slider.js":
-/*!*************************************!*\
-  !*** ./src/js/components/slider.js ***!
-  \*************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.mjs");
-/* harmony import */ var swiper_modules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/modules */ "./node_modules/swiper/modules/index.mjs");
-
-
-swiper__WEBPACK_IMPORTED_MODULE_0__["default"].use([swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Autoplay, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination]);
-var swiper1 = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](".swiper__banner", {
-  centeredSlides: true,
-  effect: "fade",
-  loop: true,
-  fadeEffect: {
-    crossFade: true
-  },
-  speed: 300,
-  // autoplay: {
-  //   delay: 3000,
-  //   disableOnInteraction: false,
-  // },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    renderBullet: function (index, className) {
-      return `<span class="${className}"><svg width="20" height="20" viewBox="0 0 20 20">
-            <circle class="progress-circle" cx="10" cy="10" r="9" />
-            <circle class="progress-svg" cx="10" cy="10" r="9" />
-          </svg></span>`;
-    }
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  },
-  on: {
-    slideChange: function () {
-      const circles = document.querySelectorAll(".swiper-pagination-bullet .progress-circle");
-      circles.forEach(circle => circle.style.display = "none");
-      const activeCircle = document.querySelector(".swiper-pagination-bullet-active .progress-circle");
-      if (activeCircle) {
-        activeCircle.style.display = "block";
-      }
-      const bullets = document.querySelectorAll(".swiper-pagination-bullet .progress-svg");
-      bullets.forEach(bullet => bullet.style.display = "none");
-      const activeBullet = document.querySelector(".swiper-pagination-bullet-active .progress-svg");
-      if (activeBullet) {
-        activeBullet.style.display = "block";
-        const circumference = 2 * Math.PI * 9;
-        activeBullet.style.strokeDasharray = circumference;
-        activeBullet.style.strokeDashoffset = circumference;
-      }
-    },
-    autoplayTimeLeft: function (s, time, progress) {
-      const activeBullet = document.querySelector(".swiper-pagination-bullet-active .progress-svg");
-      if (activeBullet) {
-        const circumference = 2 * Math.PI * 9;
-        const offset = circumference - circumference * (1 - progress);
-        activeBullet.style.strokeDashoffset = offset;
-      }
-    }
-  }
-});
-let swiper2 = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](".news__swiper", {
-  slidesPerView: "auto",
-  loop: true,
-  // centeredSlides: true,
-  effect: "slide",
-  speed: 1000,
-  loopAdditionalSlides: 10,
-  breakpoints: {
-    // 375: {
-    //   slidesPerView: 1.5,
-    // },
-    // 768: {
-    //   slidesPerView: 4,
-    // },
-    1024: {
-      slidesPerView: 3
-    }
-  },
-  navigation: {
-    nextEl: ".news__btn-next",
-    prevEl: ".news__btn-prev"
-  }
-});
-
-/***/ }),
-
-/***/ "./src/js/components/valid.js":
-/*!************************************!*\
-  !*** ./src/js/components/valid.js ***!
-  \************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../functions/validate-forms.js */ "./src/js/functions/validate-forms.js");
-
-const rules1 = [{
-  ruleSelector: ".input-email",
-  rules: [{
-    rule: "minLength",
-    value: 5
-  }, {
-    rule: "required",
-    value: true,
-    errorMessage: "Текст ошибки"
-  }]
-}, {
-  ruleSelector: ".input-tel",
-  tel: true,
-  telError: "Текст ошибки",
-  rules: [{
-    rule: "required",
-    value: true,
-    errorMessage: "Текст ошибки"
-  }]
-}, {
-  ruleSelector: ".input-name",
-  tel: false,
-  rules: [{
-    rule: "required",
-    value: true,
-    errorMessage: "Текст ошибки"
-  }]
-}, {
-  ruleSelector: ".input-password",
-  tel: false,
-  rules: [{
-    rule: "minLength",
-    value: 5
-  }, {
-    rule: "required",
-    value: true,
-    errorMessage: "Текст ошибки"
-  }]
-}, {
-  ruleSelector: ".input-password-again",
-  tel: false,
-  rules: [{
-    rule: "minLength",
-    value: 5
-  }, {
-    rule: "required",
-    value: true,
-    errorMessage: "Текст ошибки"
-  }]
-}];
-const rules2 = [{
-  ruleSelector: ".input-email",
-  rules: [{
-    rule: "minLength",
-    value: 5
-  }, {
-    rule: "required",
-    value: true,
-    errorMessage: "Текст ошибки"
-  }]
-}, {
-  ruleSelector: ".input-password",
-  tel: false,
-  rules: [{
-    rule: "minLength",
-    value: 5
-  }, {
-    rule: "required",
-    value: true,
-    errorMessage: "Текст ошибки"
-  }]
-}];
-const afterForm = () => {
-  console.log("Произошла отправка, тут можно писать любые действия");
-};
-(0,_functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_0__.validateForms)(".register-form", rules1, afterForm);
-(0,_functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_0__.validateForms)(".login-form", rules2, afterForm);
-
-/***/ }),
-
-/***/ "./src/js/functions/validate-forms.js":
-/*!********************************************!*\
-  !*** ./src/js/functions/validate-forms.js ***!
-  \********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   validateForms: () => (/* binding */ validateForms)
-/* harmony export */ });
-/* harmony import */ var just_validate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! just-validate */ "./node_modules/just-validate/dist/just-validate.es.js");
-/* harmony import */ var _node_modules_inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/inputmask/dist/inputmask.es6.js */ "./node_modules/inputmask/dist/inputmask.es6.js");
-
-
-const validateForms = function (selector, rules) {
-  let checkboxes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-  let afterSend = arguments.length > 3 ? arguments[3] : undefined;
-  const form = document?.querySelector(selector);
-  const telSelector = form?.querySelector('input[type="tel"]');
-  if (!form) {
-    console.error("Нет такого селектора!");
-    return false;
-  }
-  if (!rules) {
-    console.error("Вы не передали правила валидации!");
-    return false;
-  }
-  if (telSelector) {
-    const inputMask = new _node_modules_inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__["default"]("+7 (999) 999-99-99");
-    inputMask.mask(telSelector);
-    for (let item of rules) {
-      if (item.tel) {
-        item.rules.push({
-          rule: "function",
-          validator: function () {
-            const phone = telSelector.inputmask.unmaskedvalue();
-            return phone.length === 10;
-          },
-          errorMessage: item.telError
-        });
-      }
-    }
-  }
-  const validation = new just_validate__WEBPACK_IMPORTED_MODULE_0__["default"](selector);
-  for (let item of rules) {
-    validation.addField(item.ruleSelector, item.rules);
-  }
-  if (checkboxes.length) {
-    for (let item of checkboxes) {
-      validation.addRequiredGroup(`${item.selector}`, `${item.errorMessage}`);
-    }
-  }
-  validation.onSuccess(ev => {
-    let formData = new FormData(ev.target);
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          if (afterSend) {
-            afterSend();
-          }
-          // console.log('Отправлено');
-        }
-      }
-    };
-
-    // xhr.open('POST', 'mail.php', true);
-    // xhr.send(formData);
-
-    ev.target.reset();
-  });
-};
-
-/***/ }),
-
-/***/ "./node_modules/lodash-es/_Symbol.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash-es/_Symbol.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "./node_modules/lodash-es/_root.js");
-
+/***/ "./node_modules/lodash/_Symbol.js":
+/*!****************************************!*\
+  !*** ./node_modules/lodash/_Symbol.js ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
 
 /** Built-in value references. */
-var Symbol = _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].Symbol;
+var Symbol = root.Symbol;
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Symbol);
+module.exports = Symbol;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/_baseGetTag.js":
-/*!***********************************************!*\
-  !*** ./node_modules/lodash-es/_baseGetTag.js ***!
-  \***********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/_baseGetTag.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_baseGetTag.js ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _Symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Symbol.js */ "./node_modules/lodash-es/_Symbol.js");
-/* harmony import */ var _getRawTag_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_getRawTag.js */ "./node_modules/lodash-es/_getRawTag.js");
-/* harmony import */ var _objectToString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_objectToString.js */ "./node_modules/lodash-es/_objectToString.js");
-
-
-
+var Symbol = __webpack_require__(/*! ./_Symbol */ "./node_modules/lodash/_Symbol.js"),
+    getRawTag = __webpack_require__(/*! ./_getRawTag */ "./node_modules/lodash/_getRawTag.js"),
+    objectToString = __webpack_require__(/*! ./_objectToString */ "./node_modules/lodash/_objectToString.js");
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
     undefinedTag = '[object Undefined]';
 
 /** Built-in value references. */
-var symToStringTag = _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"].toStringTag : undefined;
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
 
 /**
  * The base implementation of `getTag` without fallbacks for buggy environments.
@@ -6495,28 +5645,22 @@ function baseGetTag(value) {
     return value === undefined ? undefinedTag : nullTag;
   }
   return (symToStringTag && symToStringTag in Object(value))
-    ? (0,_getRawTag_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)
-    : (0,_objectToString_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value);
+    ? getRawTag(value)
+    : objectToString(value);
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (baseGetTag);
+module.exports = baseGetTag;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/_baseTrim.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash-es/_baseTrim.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/_baseTrim.js":
+/*!******************************************!*\
+  !*** ./node_modules/lodash/_baseTrim.js ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_trimmedEndIndex.js */ "./node_modules/lodash-es/_trimmedEndIndex.js");
-
+var trimmedEndIndex = __webpack_require__(/*! ./_trimmedEndIndex */ "./node_modules/lodash/_trimmedEndIndex.js");
 
 /** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
@@ -6530,47 +5674,36 @@ var reTrimStart = /^\s+/;
  */
 function baseTrim(string) {
   return string
-    ? string.slice(0, (0,_trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_0__["default"])(string) + 1).replace(reTrimStart, '')
+    ? string.slice(0, trimmedEndIndex(string) + 1).replace(reTrimStart, '')
     : string;
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (baseTrim);
+module.exports = baseTrim;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/_freeGlobal.js":
-/*!***********************************************!*\
-  !*** ./node_modules/lodash-es/_freeGlobal.js ***!
-  \***********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/_freeGlobal.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_freeGlobal.js ***!
+  \********************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+var freeGlobal = typeof __webpack_require__.g == 'object' && __webpack_require__.g && __webpack_require__.g.Object === Object && __webpack_require__.g;
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (freeGlobal);
+module.exports = freeGlobal;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/_getRawTag.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash-es/_getRawTag.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/_getRawTag.js":
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_getRawTag.js ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _Symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Symbol.js */ "./node_modules/lodash-es/_Symbol.js");
-
+var Symbol = __webpack_require__(/*! ./_Symbol */ "./node_modules/lodash/_Symbol.js");
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -6586,7 +5719,7 @@ var hasOwnProperty = objectProto.hasOwnProperty;
 var nativeObjectToString = objectProto.toString;
 
 /** Built-in value references. */
-var symToStringTag = _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"].toStringTag : undefined;
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
 
 /**
  * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
@@ -6615,22 +5748,17 @@ function getRawTag(value) {
   return result;
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getRawTag);
+module.exports = getRawTag;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/_objectToString.js":
-/*!***************************************************!*\
-  !*** ./node_modules/lodash-es/_objectToString.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/_objectToString.js":
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_objectToString.js ***!
+  \************************************************/
+/***/ ((module) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
 
@@ -6652,47 +5780,36 @@ function objectToString(value) {
   return nativeObjectToString.call(value);
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (objectToString);
+module.exports = objectToString;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/_root.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash-es/_root.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/_root.js":
+/*!**************************************!*\
+  !*** ./node_modules/lodash/_root.js ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _freeGlobal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_freeGlobal.js */ "./node_modules/lodash-es/_freeGlobal.js");
-
+var freeGlobal = __webpack_require__(/*! ./_freeGlobal */ "./node_modules/lodash/_freeGlobal.js");
 
 /** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
 
 /** Used as a reference to the global object. */
-var root = _freeGlobal_js__WEBPACK_IMPORTED_MODULE_0__["default"] || freeSelf || Function('return this')();
+var root = freeGlobal || freeSelf || Function('return this')();
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (root);
+module.exports = root;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/_trimmedEndIndex.js":
-/*!****************************************************!*\
-  !*** ./node_modules/lodash-es/_trimmedEndIndex.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/_trimmedEndIndex.js":
+/*!*************************************************!*\
+  !*** ./node_modules/lodash/_trimmedEndIndex.js ***!
+  \*************************************************/
+/***/ ((module) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /** Used to match a single whitespace character. */
 var reWhitespace = /\s/;
 
@@ -6711,28 +5828,20 @@ function trimmedEndIndex(string) {
   return index;
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (trimmedEndIndex);
+module.exports = trimmedEndIndex;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/debounce.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash-es/debounce.js ***!
-  \********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/debounce.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/debounce.js ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
-/* harmony import */ var _now_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./now.js */ "./node_modules/lodash-es/now.js");
-/* harmony import */ var _toNumber_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./toNumber.js */ "./node_modules/lodash-es/toNumber.js");
-
-
-
+var isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
+    now = __webpack_require__(/*! ./now */ "./node_modules/lodash/now.js"),
+    toNumber = __webpack_require__(/*! ./toNumber */ "./node_modules/lodash/toNumber.js");
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -6810,11 +5919,11 @@ function debounce(func, wait, options) {
   if (typeof func != 'function') {
     throw new TypeError(FUNC_ERROR_TEXT);
   }
-  wait = (0,_toNumber_js__WEBPACK_IMPORTED_MODULE_0__["default"])(wait) || 0;
-  if ((0,_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(options)) {
+  wait = toNumber(wait) || 0;
+  if (isObject(options)) {
     leading = !!options.leading;
     maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax((0,_toNumber_js__WEBPACK_IMPORTED_MODULE_0__["default"])(options.maxWait) || 0, wait) : maxWait;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
     trailing = 'trailing' in options ? !!options.trailing : trailing;
   }
 
@@ -6859,7 +5968,7 @@ function debounce(func, wait, options) {
   }
 
   function timerExpired() {
-    var time = (0,_now_js__WEBPACK_IMPORTED_MODULE_2__["default"])();
+    var time = now();
     if (shouldInvoke(time)) {
       return trailingEdge(time);
     }
@@ -6888,11 +5997,11 @@ function debounce(func, wait, options) {
   }
 
   function flush() {
-    return timerId === undefined ? result : trailingEdge((0,_now_js__WEBPACK_IMPORTED_MODULE_2__["default"])());
+    return timerId === undefined ? result : trailingEdge(now());
   }
 
   function debounced() {
-    var time = (0,_now_js__WEBPACK_IMPORTED_MODULE_2__["default"])(),
+    var time = now(),
         isInvoking = shouldInvoke(time);
 
     lastArgs = arguments;
@@ -6920,22 +6029,17 @@ function debounce(func, wait, options) {
   return debounced;
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (debounce);
+module.exports = debounce;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/isObject.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash-es/isObject.js ***!
-  \********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/isObject.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/isObject.js ***!
+  \*****************************************/
+/***/ ((module) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /**
  * Checks if `value` is the
  * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
@@ -6966,22 +6070,17 @@ function isObject(value) {
   return value != null && (type == 'object' || type == 'function');
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isObject);
+module.exports = isObject;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/isObjectLike.js":
-/*!************************************************!*\
-  !*** ./node_modules/lodash-es/isObjectLike.js ***!
-  \************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/isObjectLike.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/isObjectLike.js ***!
+  \*********************************************/
+/***/ ((module) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /**
  * Checks if `value` is object-like. A value is object-like if it's not `null`
  * and has a `typeof` result of "object".
@@ -7010,26 +6109,19 @@ function isObjectLike(value) {
   return value != null && typeof value == 'object';
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isObjectLike);
+module.exports = isObjectLike;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/isSymbol.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash-es/isSymbol.js ***!
-  \********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/isSymbol.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/isSymbol.js ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _baseGetTag_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseGetTag.js */ "./node_modules/lodash-es/_baseGetTag.js");
-/* harmony import */ var _isObjectLike_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObjectLike.js */ "./node_modules/lodash-es/isObjectLike.js");
-
-
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ "./node_modules/lodash/_baseGetTag.js"),
+    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -7053,27 +6145,21 @@ var symbolTag = '[object Symbol]';
  */
 function isSymbol(value) {
   return typeof value == 'symbol' ||
-    ((0,_isObjectLike_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value) && (0,_baseGetTag_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value) == symbolTag);
+    (isObjectLike(value) && baseGetTag(value) == symbolTag);
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isSymbol);
+module.exports = isSymbol;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/now.js":
-/*!***************************************!*\
-  !*** ./node_modules/lodash-es/now.js ***!
-  \***************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/now.js":
+/*!************************************!*\
+  !*** ./node_modules/lodash/now.js ***!
+  \************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "./node_modules/lodash-es/_root.js");
-
+var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
 
 /**
  * Gets the timestamp of the number of milliseconds that have elapsed since
@@ -7092,29 +6178,22 @@ __webpack_require__.r(__webpack_exports__);
  * // => Logs the number of milliseconds it took for the deferred invocation.
  */
 var now = function() {
-  return _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].Date.now();
+  return root.Date.now();
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (now);
+module.exports = now;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/throttle.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash-es/throttle.js ***!
-  \********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/throttle.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/throttle.js ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _debounce_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./debounce.js */ "./node_modules/lodash-es/debounce.js");
-/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
-
-
+var debounce = __webpack_require__(/*! ./debounce */ "./node_modules/lodash/debounce.js"),
+    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js");
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -7170,39 +6249,31 @@ function throttle(func, wait, options) {
   if (typeof func != 'function') {
     throw new TypeError(FUNC_ERROR_TEXT);
   }
-  if ((0,_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(options)) {
+  if (isObject(options)) {
     leading = 'leading' in options ? !!options.leading : leading;
     trailing = 'trailing' in options ? !!options.trailing : trailing;
   }
-  return (0,_debounce_js__WEBPACK_IMPORTED_MODULE_1__["default"])(func, wait, {
+  return debounce(func, wait, {
     'leading': leading,
     'maxWait': wait,
     'trailing': trailing
   });
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (throttle);
+module.exports = throttle;
 
 
 /***/ }),
 
-/***/ "./node_modules/lodash-es/toNumber.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash-es/toNumber.js ***!
-  \********************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ "./node_modules/lodash/toNumber.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/toNumber.js ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _baseTrim_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_baseTrim.js */ "./node_modules/lodash-es/_baseTrim.js");
-/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
-/* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isSymbol.js */ "./node_modules/lodash-es/isSymbol.js");
-
-
-
+var baseTrim = __webpack_require__(/*! ./_baseTrim */ "./node_modules/lodash/_baseTrim.js"),
+    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
+    isSymbol = __webpack_require__(/*! ./isSymbol */ "./node_modules/lodash/isSymbol.js");
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -7246,24 +6317,24 @@ function toNumber(value) {
   if (typeof value == 'number') {
     return value;
   }
-  if ((0,_isSymbol_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
+  if (isSymbol(value)) {
     return NAN;
   }
-  if ((0,_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+  if (isObject(value)) {
     var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = (0,_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(other) ? (other + '') : other;
+    value = isObject(other) ? (other + '') : other;
   }
   if (typeof value != 'string') {
     return value === 0 ? value : +value;
   }
-  value = (0,_baseTrim_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value);
+  value = baseTrim(value);
   var isBinary = reIsBinary.test(value);
   return (isBinary || reIsOctal.test(value))
     ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
     : (reIsBadHex.test(value) ? NAN : +value);
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (toNumber);
+module.exports = toNumber;
 
 
 /***/ }),
@@ -7301,6 +6372,516 @@ var X=Object.defineProperty,Y=Object.defineProperties;var Z=Object.getOwnPropert
 
 /***/ }),
 
+/***/ "./node_modules/sharer.js/sharer.js":
+/*!******************************************!*\
+  !*** ./node_modules/sharer.js/sharer.js ***!
+  \******************************************/
+/***/ (() => {
+
+/**
+ * @preserve
+ * Sharer.js
+ *
+ * @description Create your own social share buttons
+ * @version 0.5.1
+ * @author Ellison Leao <ellisonleao@gmail.com>
+ * @license MIT
+ *
+ */
+
+(function(window, document) {
+  'use strict';
+  /**
+   * @constructor
+   */
+  var Sharer = function(elem) {
+    this.elem = elem;
+  };
+
+  /**
+   *  @function init
+   *  @description bind the events for multiple sharer elements
+   *  @returns {Empty}
+   */
+  Sharer.init = function() {
+    var elems = document.querySelectorAll('[data-sharer]'),
+      i,
+      l = elems.length;
+
+    for (i = 0; i < l; i++) {
+      elems[i].addEventListener('click', Sharer.add);
+    }
+  };
+
+  /**
+   *  @function add
+   *  @description bind the share event for a single dom element
+   *  @returns {Empty}
+   */
+  Sharer.add = function(elem) {
+    var target = elem.currentTarget || elem.srcElement;
+    var sharer = new Sharer(target);
+    sharer.share();
+  };
+
+  // instance methods
+  Sharer.prototype = {
+    constructor: Sharer,
+    /**
+     *  @function getValue
+     *  @description Helper to get the attribute of a DOM element
+     *  @param {String} attr DOM element attribute
+     *  @returns {String|Empty} returns the attr value or empty string
+     */
+    getValue: function(attr) {
+      var val = this.elem.getAttribute('data-' + attr);
+      // handing facebook hashtag attribute
+      if (val && attr === 'hashtag') {
+        if (!val.startsWith('#')) {
+          val = '#' + val;
+        }
+      }
+      return val === null ? '' : val;
+    },
+
+    /**
+     * @event share
+     * @description Main share event. Will pop a window or redirect to a link
+     * based on the data-sharer attribute.
+     */
+    share: function() {
+      var sharer = this.getValue('sharer').toLowerCase(),
+        sharers = {
+          facebook: {
+            shareUrl: 'https://www.facebook.com/sharer/sharer.php',
+            params: {
+              u: this.getValue('url'),
+              hashtag: this.getValue('hashtag'),
+              quote: this.getValue('quote'),
+            },
+          },
+          linkedin: {
+            shareUrl: 'https://www.linkedin.com/shareArticle',
+            params: {
+              url: this.getValue('url'),
+              mini: true,
+            },
+          },
+          twitter: {
+            shareUrl: 'https://twitter.com/intent/tweet',
+            params: {
+              text: this.getValue('title'),
+              url: this.getValue('url'),
+              hashtags: this.getValue('hashtags'),
+              via: this.getValue('via'),
+              related: this.getValue('related'),
+              in_reply_to: this.getValue('in_reply_to'),
+            },
+          },
+          x: {
+            shareUrl: 'https://x.com/intent/tweet',
+            params: {
+              text: this.getValue('title'),
+              url: this.getValue('url'),
+              hashtags: this.getValue('hashtags'),
+              via: this.getValue('via'),
+              related: this.getValue('related'),
+              in_reply_to: this.getValue('in_reply_to'),
+            },
+          },
+          threads: {
+            shareUrl: 'https://threads.net/intent/post',
+            params: {
+              text: this.getValue('title') + ' ' + this.getValue('url'),
+            },
+          },
+          email: {
+            shareUrl: 'mailto:' + this.getValue('to'),
+            params: {
+              subject: this.getValue('subject'),
+              body: this.getValue('title') + '\n' + this.getValue('url'),
+            },
+          },
+          whatsapp: {
+            shareUrl: this.getValue('web') === 'true' ? 'https://web.whatsapp.com/send' : 'https://wa.me/',
+            params: {
+              phone: this.getValue('to'),
+              text: this.getValue('title') + ' ' + this.getValue('url'),
+            },
+          },
+          telegram: {
+            shareUrl: 'https://t.me/share',
+            params: {
+              text: this.getValue('title'),
+              url: this.getValue('url'),
+            },
+          },
+          viber: {
+            shareUrl: 'viber://forward',
+            params: {
+              text: this.getValue('title') + ' ' + this.getValue('url'),
+            },
+          },
+          line: {
+            shareUrl:
+              'http://line.me/R/msg/text/?' + encodeURIComponent(this.getValue('title') + ' ' + this.getValue('url')),
+          },
+          pinterest: {
+            shareUrl: 'https://www.pinterest.com/pin/create/button/',
+            params: {
+              url: this.getValue('url'),
+              media: this.getValue('image'),
+              description: this.getValue('description'),
+            },
+          },
+          tumblr: {
+            shareUrl: 'http://tumblr.com/widgets/share/tool',
+            params: {
+              canonicalUrl: this.getValue('url'),
+              content: this.getValue('url'),
+              posttype: 'link',
+              title: this.getValue('title'),
+              caption: this.getValue('caption'),
+              tags: this.getValue('tags'),
+            },
+          },
+          hackernews: {
+            shareUrl: 'https://news.ycombinator.com/submitlink',
+            params: {
+              u: this.getValue('url'),
+              t: this.getValue('title'),
+            },
+          },
+          reddit: {
+            shareUrl: 'https://www.reddit.com/submit',
+            params: { url: this.getValue('url'), title: this.getValue('title') },
+          },
+          vk: {
+            shareUrl: 'http://vk.com/share.php',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+              description: this.getValue('caption'),
+              image: this.getValue('image'),
+            },
+          },
+          xing: {
+            shareUrl: 'https://www.xing.com/social/share/spi',
+            params: {
+              url: this.getValue('url'),
+            },
+          },
+          buffer: {
+            shareUrl: 'https://buffer.com/add',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+              via: this.getValue('via'),
+              picture: this.getValue('picture'),
+            },
+          },
+          instapaper: {
+            shareUrl: 'http://www.instapaper.com/edit',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+              description: this.getValue('description'),
+            },
+          },
+          pocket: {
+            shareUrl: 'https://getpocket.com/save',
+            params: {
+              url: this.getValue('url'),
+            },
+          },
+          mashable: {
+            shareUrl: 'https://mashable.com/submit',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+            },
+          },
+          mix: {
+            shareUrl: 'https://mix.com/add',
+            params: {
+              url: this.getValue('url'),
+            },
+          },
+          flipboard: {
+            shareUrl: 'https://share.flipboard.com/bookmarklet/popout',
+            params: {
+              v: 2,
+              title: this.getValue('title'),
+              url: this.getValue('url'),
+              t: Date.now(),
+            },
+          },
+          weibo: {
+            shareUrl: 'http://service.weibo.com/share/share.php',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+              pic: this.getValue('image'),
+              appkey: this.getValue('appkey'),
+              ralateUid: this.getValue('ralateuid'),
+              language: 'zh_cn',
+            },
+          },
+          blogger: {
+            shareUrl: 'https://www.blogger.com/blog-this.g',
+            params: {
+              u: this.getValue('url'),
+              n: this.getValue('title'),
+              t: this.getValue('description'),
+            },
+          },
+          baidu: {
+            shareUrl: 'http://cang.baidu.com/do/add',
+            params: {
+              it: this.getValue('title'),
+              iu: this.getValue('url'),
+            },
+          },
+          douban: {
+            shareUrl: 'https://www.douban.com/share/service',
+            params: {
+              name: this.getValue('name'),
+              href: this.getValue('url'),
+              image: this.getValue('image'),
+              comment: this.getValue('description'),
+            },
+          },
+          okru: {
+            shareUrl: 'https://connect.ok.ru/dk',
+            params: {
+              'st.cmd': 'WidgetSharePreview',
+              'st.shareUrl': this.getValue('url'),
+              title: this.getValue('title'),
+            },
+          },
+          mailru: {
+            shareUrl: 'http://connect.mail.ru/share',
+            params: {
+              share_url: this.getValue('url'),
+              linkname: this.getValue('title'),
+              linknote: this.getValue('description'),
+              type: 'page',
+            },
+          },
+          evernote: {
+            shareUrl: 'https://www.evernote.com/clip.action',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+            },
+          },
+          skype: {
+            shareUrl: 'https://web.skype.com/share',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+            },
+          },
+          delicious: {
+            shareUrl: 'https://del.icio.us/post',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+            },
+          },
+          sms: {
+            shareUrl: 'sms://',
+            params: {
+              body: this.getValue('body'),
+            },
+          },
+          trello: {
+            shareUrl: 'https://trello.com/add-card',
+            params: {
+              url: this.getValue('url'),
+              name: this.getValue('title'),
+              desc: this.getValue('description'),
+              mode: 'popup',
+            },
+          },
+          messenger: {
+            shareUrl: 'fb-messenger://share',
+            params: {
+              link: this.getValue('url'),
+            },
+          },
+          odnoklassniki: {
+            shareUrl: 'https://connect.ok.ru/dk',
+            params: {
+              st: {
+                cmd: 'WidgetSharePreview',
+                deprecated: 1,
+                shareUrl: this.getValue('url'),
+              },
+            },
+          },
+          meneame: {
+            shareUrl: 'https://www.meneame.net/submit',
+            params: {
+              url: this.getValue('url'),
+            },
+          },
+          diaspora: {
+            shareUrl: 'https://share.diasporafoundation.org',
+            params: {
+              title: this.getValue('title'),
+              url: this.getValue('url'),
+            },
+          },
+          googlebookmarks: {
+            shareUrl: 'https://www.google.com/bookmarks/mark',
+            params: {
+              op: 'edit',
+              bkmk: this.getValue('url'),
+              title: this.getValue('title'),
+            },
+          },
+          qzone: {
+            shareUrl: 'https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey',
+            params: {
+              url: this.getValue('url'),
+            },
+          },
+          refind: {
+            shareUrl: 'https://refind.com',
+            params: {
+              url: this.getValue('url'),
+            },
+          },
+          surfingbird: {
+            shareUrl: 'https://surfingbird.ru/share',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+              description: this.getValue('description'),
+            },
+          },
+          yahoomail: {
+            shareUrl: 'http://compose.mail.yahoo.com',
+            params: {
+              to: this.getValue('to'),
+              subject: this.getValue('subject'),
+              body: this.getValue('body'),
+            },
+          },
+          wordpress: {
+            shareUrl: 'https://wordpress.com/wp-admin/press-this.php',
+            params: {
+              u: this.getValue('url'),
+              t: this.getValue('title'),
+              s: this.getValue('title'),
+            },
+          },
+          amazon: {
+            shareUrl: 'https://www.amazon.com/gp/wishlist/static-add',
+            params: {
+              u: this.getValue('url'),
+              t: this.getValue('title'),
+            },
+          },
+          pinboard: {
+            shareUrl: 'https://pinboard.in/add',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+              description: this.getValue('description'),
+            },
+          },
+          threema: {
+            shareUrl: 'threema://compose',
+            params: {
+              text: this.getValue('text'),
+              id: this.getValue('id'),
+            },
+          },
+          kakaostory: {
+            shareUrl: 'https://story.kakao.com/share',
+            params: {
+              url: this.getValue('url'),
+            },
+          },
+          yummly: {
+            shareUrl: 'http://www.yummly.com/urb/verify',
+            params: {
+              url: this.getValue('url'),
+              title: this.getValue('title'),
+              yumtype: 'button',
+            },
+          },
+        },
+        s = sharers[sharer];
+
+      // custom popups sizes
+      if (s) {
+        s.width = this.getValue('width');
+        s.height = this.getValue('height');
+      }
+      return s !== undefined ? this.urlSharer(s) : false;
+    },
+    /**
+     * @event urlSharer
+     * @param {Object} sharer
+     */
+    urlSharer: function(sharer) {
+      var p = sharer.params || {},
+        keys = Object.keys(p),
+        i,
+        str = keys.length > 0 ? '?' : '';
+      for (i = 0; i < keys.length; i++) {
+        if (str !== '?') {
+          str += '&';
+        }
+        if (p[keys[i]]) {
+          str += keys[i] + '=' + encodeURIComponent(p[keys[i]]);
+        }
+      }
+      sharer.shareUrl += str;
+
+      var isLink = this.getValue('link') === 'true';
+      var isBlank = this.getValue('blank') === 'true';
+
+      if (isLink) {
+        if (isBlank) {
+          window.open(sharer.shareUrl, '_blank');
+        } else {
+          window.location.href = sharer.shareUrl;
+        }
+      } else {
+        console.log(sharer.shareUrl);
+        // defaults to popup if no data-link is provided
+        var popWidth = sharer.width || 600,
+          popHeight = sharer.height || 480,
+          left = window.innerWidth / 2 - popWidth / 2 + window.screenX,
+          top = window.innerHeight / 2 - popHeight / 2 + window.screenY,
+          popParams = 'scrollbars=no, width=' + popWidth + ', height=' + popHeight + ', top=' + top + ', left=' + left,
+          newWindow = window.open(sharer.shareUrl, '', popParams);
+
+        if (window.focus) {
+          newWindow.focus();
+        }
+      }
+    },
+  };
+
+  // adding sharer events on domcontentload
+  if (document.readyState === 'complete' || document.readyState !== 'loading') {
+    Sharer.init();
+  } else {
+    document.addEventListener('DOMContentLoaded', Sharer.init);
+  }
+
+  // exporting sharer for external usage
+  window.Sharer = Sharer;
+})(window, document);
+
+
+/***/ }),
+
 /***/ "./node_modules/simplebar-core/dist/index.mjs":
 /*!****************************************************!*\
   !*** ./node_modules/simplebar-core/dist/index.mjs ***!
@@ -7312,16 +6893,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SimpleBarCore)
 /* harmony export */ });
-/* harmony import */ var lodash_es__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash-es */ "./node_modules/lodash-es/throttle.js");
-/* harmony import */ var lodash_es__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash-es */ "./node_modules/lodash-es/debounce.js");
+/* harmony import */ var lodash_debounce_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/debounce.js */ "./node_modules/lodash/debounce.js");
+/* harmony import */ var lodash_throttle_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/throttle.js */ "./node_modules/lodash/throttle.js");
 /**
- * simplebar-core - v1.2.6
+ * simplebar-core - v1.3.0
  * Scrollbars, simpler.
  * https://grsmto.github.io/simplebar/
  *
  * Made by Adrien Denat from a fork by Jonathan Nicol
  * Under MIT License
  */
+
 
 
 
@@ -7714,10 +7296,10 @@ var SimpleBarCore = /** @class */ (function () {
         if (typeof this.el !== 'object' || !this.el.nodeName) {
             throw new Error("Argument passed to SimpleBar must be an HTML element instead of ".concat(this.el));
         }
-        this.onMouseMove = (0,lodash_es__WEBPACK_IMPORTED_MODULE_0__["default"])(this._onMouseMove, 64);
-        this.onWindowResize = (0,lodash_es__WEBPACK_IMPORTED_MODULE_1__["default"])(this._onWindowResize, 64, { leading: true });
-        this.onStopScrolling = (0,lodash_es__WEBPACK_IMPORTED_MODULE_1__["default"])(this._onStopScrolling, this.stopScrollDelay);
-        this.onMouseEntered = (0,lodash_es__WEBPACK_IMPORTED_MODULE_1__["default"])(this._onMouseEntered, this.stopScrollDelay);
+        this.onMouseMove = lodash_throttle_js__WEBPACK_IMPORTED_MODULE_1__(this._onMouseMove, 64);
+        this.onWindowResize = lodash_debounce_js__WEBPACK_IMPORTED_MODULE_0__(this._onWindowResize, 64, { leading: true });
+        this.onStopScrolling = lodash_debounce_js__WEBPACK_IMPORTED_MODULE_0__(this._onStopScrolling, this.stopScrollDelay);
+        this.onMouseEntered = lodash_debounce_js__WEBPACK_IMPORTED_MODULE_0__(this._onMouseEntered, this.stopScrollDelay);
         this.init();
     }
     /**
@@ -8260,7 +7842,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var simplebar_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simplebar-core */ "./node_modules/simplebar-core/dist/index.mjs");
 /**
- * simplebar - v6.2.7
+ * simplebar - v6.3.0
  * Scrollbars, simpler.
  * https://grsmto.github.io/simplebar/
  *
@@ -8938,7 +8520,7 @@ function Autoplay(_ref) {
   const getSlideDelay = () => {
     let activeSlideEl;
     if (swiper.virtual && swiper.params.virtual.enabled) {
-      activeSlideEl = swiper.slides.filter(slideEl => slideEl.classList.contains('swiper-slide-active'))[0];
+      activeSlideEl = swiper.slides.find(slideEl => slideEl.classList.contains('swiper-slide-active'));
     } else {
       activeSlideEl = swiper.slides[swiper.activeIndex];
     }
@@ -9519,7 +9101,10 @@ function EffectCards(_ref) {
     setTransition,
     perspective: () => true,
     overwriteParams: () => ({
+      _loopSwapReset: false,
       watchSlidesProgress: true,
+      loopAdditionalSlides: 3,
+      centeredSlides: true,
       virtualTranslate: !swiper.params.cssMode
     })
   });
@@ -10682,7 +10267,7 @@ function HashNavigation(_ref) {
       watchState: false,
       getSlideIndex(_s, hash) {
         if (swiper.virtual && swiper.params.virtual.enabled) {
-          const slideWithHash = swiper.slides.filter(slideEl => slideEl.getAttribute('data-hash') === hash)[0];
+          const slideWithHash = swiper.slides.find(slideEl => slideEl.getAttribute('data-hash') === hash);
           if (!slideWithHash) return 0;
           const index = parseInt(slideWithHash.getAttribute('data-swiper-slide-index'), 10);
           return index;
@@ -11689,7 +11274,7 @@ function Mousewheel(_ref) {
         if (!ignoreWheelEvents) emit('scroll', e);
 
         // Stop autoplay
-        if (swiper.params.autoplay && swiper.params.autoplayDisableOnInteraction) swiper.autoplay.stop();
+        if (swiper.params.autoplay && swiper.params.autoplay.disableOnInteraction) swiper.autoplay.stop();
         // Return page scroll on edge positions
         if (params.releaseOnEdges && (position === swiper.minTranslate() || position === swiper.maxTranslate())) {
           return true;
@@ -12291,10 +11876,10 @@ function Pagination(_ref) {
       el = [...swiper.el.querySelectorAll(params.el)];
       // check if it belongs to another nested Swiper
       if (el.length > 1) {
-        el = el.filter(subEl => {
+        el = el.find(subEl => {
           if ((0,_shared_utils_mjs__WEBPACK_IMPORTED_MODULE_2__.a)(subEl, '.swiper')[0] !== swiper.el) return false;
           return true;
-        })[0];
+        });
       }
     }
     if (Array.isArray(el) && el.length === 1) el = el[0];
@@ -13034,6 +12619,10 @@ function Thumb(_ref) {
     initialized = true;
     const SwiperClass = swiper.constructor;
     if (thumbsParams.swiper instanceof SwiperClass) {
+      if (thumbsParams.swiper.destroyed) {
+        initialized = false;
+        return false;
+      }
       swiper.thumbs.swiper = thumbsParams.swiper;
       Object.assign(swiper.thumbs.swiper.originalParams, {
         watchSlidesProgress: true,
@@ -13093,7 +12682,7 @@ function Thumb(_ref) {
       let newThumbsIndex;
       let direction;
       if (thumbsSwiper.params.loop) {
-        const newThumbsSlide = thumbsSwiper.slides.filter(slideEl => slideEl.getAttribute('data-swiper-slide-index') === `${swiper.realIndex}`)[0];
+        const newThumbsSlide = thumbsSwiper.slides.find(slideEl => slideEl.getAttribute('data-swiper-slide-index') === `${swiper.realIndex}`);
         newThumbsIndex = thumbsSwiper.slides.indexOf(newThumbsSlide);
         direction = swiper.activeIndex > swiper.previousIndex ? 'next' : 'prev';
       } else {
@@ -13254,7 +12843,7 @@ function Virtual(_ref) {
     }
     return slideEl;
   }
-  function update(force, beforeInit) {
+  function update(force, beforeInit, forceActiveIndex) {
     const {
       slidesPerView,
       slidesPerGroup,
@@ -13279,7 +12868,7 @@ function Virtual(_ref) {
     if (!swiper.params.cssMode) {
       swiper.updateActiveIndex();
     }
-    const activeIndex = swiper.activeIndex || 0;
+    const activeIndex = typeof forceActiveIndex === 'undefined' ? swiper.activeIndex || 0 : forceActiveIndex;
     let offsetProp;
     if (swiper.rtlTranslate) offsetProp = 'right';else offsetProp = swiper.isHorizontal() ? 'left' : 'top';
     let slidesAfter;
@@ -13577,6 +13166,7 @@ function Zoom(_ref) {
       limitToOriginalSize: false,
       maxRatio: 3,
       minRatio: 1,
+      panOnMouseMove: false,
       toggle: true,
       containerClass: 'swiper-zoom-container',
       zoomedSlideClass: 'swiper-slide-zoomed'
@@ -13587,6 +13177,12 @@ function Zoom(_ref) {
   };
   let currentScale = 1;
   let isScaling = false;
+  let isPanningWithMouse = false;
+  let mousePanStart = {
+    x: 0,
+    y: 0
+  };
+  const mousePanSensitivity = -3; // Negative to invert pan direction
   let fakeGestureTouched;
   let fakeGestureMoved;
   const evCache = [];
@@ -13796,6 +13392,8 @@ function Zoom(_ref) {
     image.touchesStart.y = event.pageY;
   }
   function onTouchMove(e) {
+    const isMouseEvent = e.pointerType === 'mouse';
+    const isMousePan = isMouseEvent && swiper.params.zoom.panOnMouseMove;
     if (!eventWithinSlide(e) || !eventWithinZoomContainer(e)) {
       return;
     }
@@ -13804,6 +13402,11 @@ function Zoom(_ref) {
       return;
     }
     if (!image.isTouched || !gesture.slideEl) {
+      if (isMousePan) onMouseMove(e);
+      return;
+    }
+    if (isMousePan) {
+      onMouseMove(e);
       return;
     }
     if (!image.isMoved) {
@@ -13881,6 +13484,7 @@ function Zoom(_ref) {
   }
   function onTouchEnd() {
     const zoom = swiper.zoom;
+    evCache.length = 0;
     if (!gesture.imageEl) return;
     if (!image.isTouched || !image.isMoved) {
       image.isTouched = false;
@@ -13932,6 +13536,45 @@ function Zoom(_ref) {
       gesture.originX = 0;
       gesture.originY = 0;
     }
+  }
+  function onMouseMove(e) {
+    // Only pan if zoomed in and mouse panning is enabled
+    if (currentScale <= 1 || !gesture.imageWrapEl) return;
+    if (!eventWithinSlide(e) || !eventWithinZoomContainer(e)) return;
+    const currentTransform = window.getComputedStyle(gesture.imageWrapEl).transform;
+    const matrix = new window.DOMMatrix(currentTransform);
+    if (!isPanningWithMouse) {
+      isPanningWithMouse = true;
+      mousePanStart.x = e.clientX;
+      mousePanStart.y = e.clientY;
+      image.startX = matrix.e;
+      image.startY = matrix.f;
+      image.width = gesture.imageEl.offsetWidth || gesture.imageEl.clientWidth;
+      image.height = gesture.imageEl.offsetHeight || gesture.imageEl.clientHeight;
+      gesture.slideWidth = gesture.slideEl.offsetWidth;
+      gesture.slideHeight = gesture.slideEl.offsetHeight;
+      return;
+    }
+    const deltaX = (e.clientX - mousePanStart.x) * mousePanSensitivity;
+    const deltaY = (e.clientY - mousePanStart.y) * mousePanSensitivity;
+    const scaledWidth = image.width * currentScale;
+    const scaledHeight = image.height * currentScale;
+    const slideWidth = gesture.slideWidth;
+    const slideHeight = gesture.slideHeight;
+    const minX = Math.min(slideWidth / 2 - scaledWidth / 2, 0);
+    const maxX = -minX;
+    const minY = Math.min(slideHeight / 2 - scaledHeight / 2, 0);
+    const maxY = -minY;
+    const newX = Math.max(Math.min(image.startX + deltaX, maxX), minX);
+    const newY = Math.max(Math.min(image.startY + deltaY, maxY), minY);
+    gesture.imageWrapEl.style.transitionDuration = '0ms';
+    gesture.imageWrapEl.style.transform = `translate3d(${newX}px, ${newY}px, 0)`;
+    mousePanStart.x = e.clientX;
+    mousePanStart.y = e.clientY;
+    image.startX = newX;
+    image.startY = newY;
+    image.currentX = newX;
+    image.currentY = newY;
   }
   function zoomIn(e) {
     const zoom = swiper.zoom;
@@ -13989,6 +13632,7 @@ function Zoom(_ref) {
       touchX = image.touchesStart.x;
       touchY = image.touchesStart.y;
     }
+    const prevScale = currentScale;
     const forceZoomRatio = typeof e === 'number' ? e : null;
     if (currentScale === 1 && forceZoomRatio) {
       touchX = undefined;
@@ -14014,8 +13658,13 @@ function Zoom(_ref) {
       translateMinY = Math.min(slideHeight / 2 - scaledHeight / 2, 0);
       translateMaxX = -translateMinX;
       translateMaxY = -translateMinY;
-      translateX = diffX * zoom.scale;
-      translateY = diffY * zoom.scale;
+      if (prevScale > 0 && forceZoomRatio && typeof image.currentX === 'number' && typeof image.currentY === 'number') {
+        translateX = image.currentX * zoom.scale / prevScale;
+        translateY = image.currentY * zoom.scale / prevScale;
+      } else {
+        translateX = diffX * zoom.scale;
+        translateY = diffY * zoom.scale;
+      }
       if (translateX < translateMinX) {
         translateX = translateMinX;
       }
@@ -14036,6 +13685,8 @@ function Zoom(_ref) {
       gesture.originX = 0;
       gesture.originY = 0;
     }
+    image.currentX = translateX;
+    image.currentY = translateY;
     gesture.imageWrapEl.style.transitionDuration = '300ms';
     gesture.imageWrapEl.style.transform = `translate3d(${translateX}px, ${translateY}px,0)`;
     gesture.imageEl.style.transitionDuration = '300ms';
@@ -14068,6 +13719,8 @@ function Zoom(_ref) {
     }
     zoom.scale = 1;
     currentScale = 1;
+    image.currentX = undefined;
+    image.currentY = undefined;
     image.touchesStart.x = undefined;
     image.touchesStart.y = undefined;
     gesture.imageWrapEl.style.transitionDuration = '300ms';
@@ -14078,6 +13731,17 @@ function Zoom(_ref) {
     gesture.slideEl = undefined;
     gesture.originX = 0;
     gesture.originY = 0;
+    if (swiper.params.zoom.panOnMouseMove) {
+      mousePanStart = {
+        x: 0,
+        y: 0
+      };
+      if (isPanningWithMouse) {
+        isPanningWithMouse = false;
+        image.startX = 0;
+        image.startY = 0;
+      }
+    }
   }
 
   // Toggle Zoom
@@ -14409,7 +14073,7 @@ function effectVirtualTransitionEnd(_ref) {
   const getSlide = el => {
     if (!el.parentElement) {
       // assume shadow root
-      const slide = swiper.slides.filter(slideEl => slideEl.shadowRoot && slideEl.shadowRoot === el.parentNode)[0];
+      const slide = swiper.slides.find(slideEl => slideEl.shadowRoot && slideEl.shadowRoot === el.parentNode);
       return slide;
     }
     return el.parentElement;
@@ -14459,15 +14123,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   g: () => (/* binding */ getDocument)
 /* harmony export */ });
 /**
- * SSR Window 4.0.2
+ * SSR Window 5.0.0
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
- * Copyright 2021, Vladimir Kharlampidi
+ * Copyright 2025, Vladimir Kharlampidi
  *
  * Licensed under MIT
  *
- * Released on: December 13, 2021
+ * Released on: February 12, 2025
  */
 /* eslint-disable no-param-reassign */
 function isObject(obj) {
@@ -14480,7 +14144,8 @@ function extend(target, src) {
   if (src === void 0) {
     src = {};
   }
-  Object.keys(src).forEach(key => {
+  const noExtend = ['__proto__', 'constructor', 'prototype'];
+  Object.keys(src).filter(key => noExtend.indexOf(key) < 0).forEach(key => {
     if (typeof target[key] === 'undefined') target[key] = src[key];else if (isObject(src[key]) && isObject(target[key]) && Object.keys(src[key]).length > 0) {
       extend(target[key], src[key]);
     }
@@ -15484,9 +15149,9 @@ function updateSlidesClasses() {
     }
   } else {
     if (gridEnabled) {
-      activeSlide = slides.filter(slideEl => slideEl.column === activeIndex)[0];
-      nextSlide = slides.filter(slideEl => slideEl.column === activeIndex + 1)[0];
-      prevSlide = slides.filter(slideEl => slideEl.column === activeIndex - 1)[0];
+      activeSlide = slides.find(slideEl => slideEl.column === activeIndex);
+      nextSlide = slides.find(slideEl => slideEl.column === activeIndex + 1);
+      prevSlide = slides.find(slideEl => slideEl.column === activeIndex - 1);
     } else {
       activeSlide = slides[activeIndex];
     }
@@ -15651,7 +15316,7 @@ function updateActiveIndex(newActiveIndex) {
   if (swiper.virtual && params.virtual.enabled && params.loop) {
     realIndex = getVirtualRealIndex(activeIndex);
   } else if (gridEnabled) {
-    const firstSlideInColumn = swiper.slides.filter(slideEl => slideEl.column === activeIndex)[0];
+    const firstSlideInColumn = swiper.slides.find(slideEl => slideEl.column === activeIndex);
     let activeSlideIndex = parseInt(firstSlideInColumn.getAttribute('data-swiper-slide-index'), 10);
     if (Number.isNaN(activeSlideIndex)) {
       activeSlideIndex = Math.max(swiper.slides.indexOf(firstSlideInColumn), 0);
@@ -16120,6 +15785,11 @@ function slideTo(index, speed, runCallbacks, internal, initial) {
     }
     return true;
   }
+  const browser = getBrowser();
+  const isSafari = browser.isSafari;
+  if (isVirtual && !initial && isSafari && swiper.isElement) {
+    swiper.virtual.update(false, false, slideIndex);
+  }
   swiper.setTransition(speed);
   swiper.setTranslate(translate);
   swiper.updateActiveIndex(slideIndex);
@@ -16171,7 +15841,7 @@ function slideToLoop(index, speed, runCallbacks, internal) {
       let targetSlideIndex;
       if (gridEnabled) {
         const slideIndex = newIndex * swiper.params.grid.rows;
-        targetSlideIndex = swiper.slides.filter(slideEl => slideEl.getAttribute('data-swiper-slide-index') * 1 === slideIndex)[0].column;
+        targetSlideIndex = swiper.slides.find(slideEl => slideEl.getAttribute('data-swiper-slide-index') * 1 === slideIndex).column;
       } else {
         targetSlideIndex = swiper.getSlideIndexByData(newIndex);
       }
@@ -16206,7 +15876,7 @@ function slideToLoop(index, speed, runCallbacks, internal) {
       }
       if (gridEnabled) {
         const slideIndex = newIndex * swiper.params.grid.rows;
-        newIndex = swiper.slides.filter(slideEl => slideEl.getAttribute('data-swiper-slide-index') * 1 === slideIndex)[0].column;
+        newIndex = swiper.slides.find(slideEl => slideEl.getAttribute('data-swiper-slide-index') * 1 === slideIndex).column;
       } else {
         newIndex = swiper.getSlideIndexByData(newIndex);
       }
@@ -16293,8 +15963,9 @@ function slidePrev(speed, runCallbacks, internal) {
   }
   const normalizedTranslate = normalize(translate);
   const normalizedSnapGrid = snapGrid.map(val => normalize(val));
+  const isFreeMode = params.freeMode && params.freeMode.enabled;
   let prevSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate) - 1];
-  if (typeof prevSnap === 'undefined' && params.cssMode) {
+  if (typeof prevSnap === 'undefined' && (params.cssMode || isFreeMode)) {
     let prevSnapIndex;
     snapGrid.forEach((snap, snapIndex) => {
       if (normalizedTranslate >= snap) {
@@ -16303,7 +15974,7 @@ function slidePrev(speed, runCallbacks, internal) {
       }
     });
     if (typeof prevSnapIndex !== 'undefined') {
-      prevSnap = snapGrid[prevSnapIndex > 0 ? prevSnapIndex - 1 : prevSnapIndex];
+      prevSnap = isFreeMode ? snapGrid[prevSnapIndex] : snapGrid[prevSnapIndex > 0 ? prevSnapIndex - 1 : prevSnapIndex];
     }
   }
   let prevIndex = 0;
@@ -16545,7 +16216,7 @@ function loopFix(_temp) {
   const appendSlidesIndexes = [];
   let activeIndex = swiper.activeIndex;
   if (typeof activeSlideIndex === 'undefined') {
-    activeSlideIndex = swiper.getSlideIndex(slides.filter(el => el.classList.contains(params.slideActiveClass))[0]);
+    activeSlideIndex = swiper.getSlideIndex(slides.find(el => el.classList.contains(params.slideActiveClass)));
   } else {
     activeIndex = activeSlideIndex;
   }
@@ -16690,7 +16361,7 @@ function loopDestroy() {
     params,
     slidesEl
   } = swiper;
-  if (!params.loop || swiper.virtual && swiper.params.virtual.enabled) return;
+  if (!params.loop || !slidesEl || swiper.virtual && swiper.params.virtual.enabled) return;
   swiper.recalcSlides();
   const newSlidesOrder = [];
   swiper.slides.forEach(slideEl => {
@@ -16905,7 +16576,7 @@ function onTouchMove(event) {
   }
   let targetTouch;
   if (e.type === 'touchmove') {
-    targetTouch = [...e.changedTouches].filter(t => t.identifier === data.touchId)[0];
+    targetTouch = [...e.changedTouches].find(t => t.identifier === data.touchId);
     if (!targetTouch || targetTouch.identifier !== data.touchId) return;
   } else {
     targetTouch = e;
@@ -17048,7 +16719,7 @@ function onTouchMove(event) {
   }
   let loopFixed;
   new Date().getTime();
-  if (data.isMoved && data.allowThresholdMove && prevTouchesDirection !== swiper.touchesDirection && isLoop && allowLoopFix && Math.abs(diff) >= 1) {
+  if (params._loopSwapReset !== false && data.isMoved && data.allowThresholdMove && prevTouchesDirection !== swiper.touchesDirection && isLoop && allowLoopFix && Math.abs(diff) >= 1) {
     Object.assign(touches, {
       startX: pageX,
       startY: pageY,
@@ -17156,7 +16827,7 @@ function onTouchEnd(event) {
     if (e.pointerId !== data.pointerId) return;
     targetTouch = e;
   } else {
-    targetTouch = [...e.changedTouches].filter(t => t.identifier === data.touchId)[0];
+    targetTouch = [...e.changedTouches].find(t => t.identifier === data.touchId);
     if (!targetTouch || targetTouch.identifier !== data.touchId) return;
   }
   if (['pointercancel', 'pointerout', 'pointerleave', 'contextmenu'].includes(e.type)) {
@@ -17530,9 +17201,12 @@ function setBreakpoint() {
   } = swiper;
   const breakpoints = params.breakpoints;
   if (!breakpoints || breakpoints && Object.keys(breakpoints).length === 0) return;
+  const document = (0,_ssr_window_esm_mjs__WEBPACK_IMPORTED_MODULE_0__.g)();
 
-  // Get breakpoint for window width and update parameters
-  const breakpoint = swiper.getBreakpoint(breakpoints, swiper.params.breakpointsBase, swiper.el);
+  // Get breakpoint for window/container width and update parameters
+  const breakpointsBase = params.breakpointsBase === 'window' || !params.breakpointsBase ? params.breakpointsBase : 'container';
+  const breakpointContainer = ['window', 'container'].includes(params.breakpointsBase) || !params.breakpointsBase ? swiper.el : document.querySelector(params.breakpointsBase);
+  const breakpoint = swiper.getBreakpoint(breakpoints, breakpointsBase, breakpointContainer);
   if (!breakpoint || swiper.currentBreakpoint === breakpoint) return;
   const breakpointOnlyParams = breakpoint in breakpoints ? breakpoints[breakpoint] : undefined;
   const breakpointParams = breakpointOnlyParams || swiper.originalParams;
@@ -18108,7 +17782,7 @@ class Swiper {
     return (0,_utils_mjs__WEBPACK_IMPORTED_MODULE_1__.h)(slideEl) - firstSlideIndex;
   }
   getSlideIndexByData(index) {
-    return this.getSlideIndex(this.slides.filter(slideEl => slideEl.getAttribute('data-swiper-slide-index') * 1 === index)[0]);
+    return this.getSlideIndex(this.slides.find(slideEl => slideEl.getAttribute('data-swiper-slide-index') * 1 === index));
   }
   recalcSlides() {
     const swiper = this;
@@ -18758,8 +18432,9 @@ function elementChildren(element, selector) {
   if (selector === void 0) {
     selector = '';
   }
+  const window = (0,_ssr_window_esm_mjs__WEBPACK_IMPORTED_MODULE_0__.a)();
   const children = [...element.children];
-  if (element instanceof HTMLSlotElement) {
+  if (window.HTMLSlotElement && element instanceof HTMLSlotElement) {
     children.push(...element.assignedElements());
   }
   if (!selector) {
@@ -18767,11 +18442,26 @@ function elementChildren(element, selector) {
   }
   return children.filter(el => el.matches(selector));
 }
+function elementIsChildOfSlot(el, slot) {
+  // Breadth-first search through all parent's children and assigned elements
+  const elementsQueue = [slot];
+  while (elementsQueue.length > 0) {
+    const elementToCheck = elementsQueue.shift();
+    if (el === elementToCheck) {
+      return true;
+    }
+    elementsQueue.push(...elementToCheck.children, ...(elementToCheck.shadowRoot ? elementToCheck.shadowRoot.children : []), ...(elementToCheck.assignedElements ? elementToCheck.assignedElements() : []));
+  }
+}
 function elementIsChildOf(el, parent) {
-  const isChild = parent.contains(el);
-  if (!isChild && parent instanceof HTMLSlotElement) {
+  const window = (0,_ssr_window_esm_mjs__WEBPACK_IMPORTED_MODULE_0__.a)();
+  let isChild = parent.contains(el);
+  if (!isChild && window.HTMLSlotElement && parent instanceof HTMLSlotElement) {
     const children = [...parent.assignedElements()];
-    return children.includes(el);
+    isChild = children.includes(el);
+    if (!isChild) {
+      isChild = elementIsChildOfSlot(el, parent);
+    }
   }
   return isChild;
 }
@@ -18905,19 +18595,798 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _shared_swiper_core_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./shared/swiper-core.mjs */ "./node_modules/swiper/shared/swiper-core.mjs");
 /**
- * Swiper 11.1.14
+ * Swiper 11.2.5
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * https://swiperjs.com
  *
- * Copyright 2014-2024 Vladimir Kharlampidi
+ * Copyright 2014-2025 Vladimir Kharlampidi
  *
  * Released under the MIT License
  *
- * Released on: September 12, 2024
+ * Released on: March 3, 2025
  */
 
 
 
+
+/***/ }),
+
+/***/ "./src/js/_components.js":
+/*!*******************************!*\
+  !*** ./src/js/_components.js ***!
+  \*******************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_slider_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/slider.js */ "./src/js/components/slider.js");
+/* harmony import */ var _components_modals_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/modals.js */ "./src/js/components/modals.js");
+/* harmony import */ var _components_calendar_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/calendar.js */ "./src/js/components/calendar.js");
+/* harmony import */ var _components_search_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/search.js */ "./src/js/components/search.js");
+/* harmony import */ var _components_menu_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/menu.js */ "./src/js/components/menu.js");
+/* harmony import */ var _components_scroll_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/scroll.js */ "./src/js/components/scroll.js");
+/* harmony import */ var _components_burger_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/burger.js */ "./src/js/components/burger.js");
+/* harmony import */ var _components_valid_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/valid.js */ "./src/js/components/valid.js");
+/* harmony import */ var _components_inside_menu_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/inside-menu.js */ "./src/js/components/inside-menu.js");
+/* harmony import */ var sharer_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! sharer.js */ "./node_modules/sharer.js/sharer.js");
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/js/components/burger.js":
+/*!*************************************!*\
+  !*** ./src/js/components/burger.js ***!
+  \*************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const initMobileMenu = () => {
+  const burger = document.querySelector("[data-burger]");
+  const menu = document.querySelector(".mobile-menu");
+  const body = document.querySelector("body");
+  if (burger) {
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("js-active");
+      menu.classList.toggle("js-active");
+      body.classList.toggle("js-hidden");
+    });
+  }
+};
+initMobileMenu();
+
+/***/ }),
+
+/***/ "./src/js/components/calendar.js":
+/*!***************************************!*\
+  !*** ./src/js/components/calendar.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const monthNames = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+const calendarDays = document.getElementById("calendarDays");
+if (calendarDays) {
+  const prevYearButton = document.getElementById("prevYear");
+  const nextYearButton = document.getElementById("nextYear");
+  const prevYearDisplay = document.getElementById("prevYearDisplay");
+  const currentYearDisplay = document.getElementById("currentYearDisplay");
+  const nextYearDisplay = document.getElementById("nextYearDisplay");
+  const calendarHeaderNext = document.getElementById("calendarHeaderNext");
+  const customSelectTrigger = document.querySelector(".custom-select-trigger");
+  const customOptions = document.querySelector(".custom-options");
+  const options = document.querySelectorAll(".custom-option");
+  const customArrow = document.querySelector(".custom-arrow");
+  let currentDate = new Date();
+  let currentYear = currentDate.getFullYear();
+  let currentYear1 = currentDate.getFullYear();
+  let currentMonth = currentDate.getMonth();
+  let currentDay = currentDate.getDate();
+  function renderCalendar(year, month) {
+    calendarDays.innerHTML = "";
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    const prevMonthLastDay = new Date(year, month, 0).getDate();
+    const prevMonthDaysToShow = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1;
+    const dayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+    dayNames.forEach(day => {
+      const dayElement = document.createElement("div");
+      dayElement.className = "day-name";
+      dayElement.textContent = day;
+      calendarDays.appendChild(dayElement);
+    });
+    for (let i = prevMonthLastDay - prevMonthDaysToShow + 1; i <= prevMonthLastDay; i++) {
+      const emptyCell = document.createElement("div");
+      emptyCell.className = "day faded";
+      emptyCell.textContent = i;
+      calendarDays.appendChild(emptyCell);
+    }
+    for (let i = 1; i <= daysInMonth; i++) {
+      const dayElement = document.createElement("div");
+      dayElement.className = "day";
+      dayElement.textContent = i;
+      const dayDate = new Date(year, month, i);
+      if (dayDate.getDay() === 0 || dayDate.getDay() === 6) {
+        dayElement.style.color = "red";
+      }
+      dayElement.addEventListener("click", () => {
+        currentDay = i;
+        highlightSelectedDay(dayElement);
+        console.log(`Selected date: ${currentYear}-${currentMonth + 1}-${currentDay}`);
+      });
+      if (i === currentDay && year === currentYear && month === currentMonth) {
+        dayElement.classList.add("selected");
+      }
+      calendarDays.appendChild(dayElement);
+    }
+    const totalCells = 42;
+    const currentCells = prevMonthDaysToShow + daysInMonth;
+    const nextDaysToShow = totalCells - currentCells;
+    for (let i = 1; i <= nextDaysToShow; i++) {
+      const nextDayElement = document.createElement("div");
+      nextDayElement.className = "day faded";
+      nextDayElement.textContent = i;
+      calendarDays.appendChild(nextDayElement);
+    }
+    updateYearDisplays(year);
+    updateCalendarHeaderVisibility(year);
+  }
+  function updateYearDisplays(year) {
+    prevYearDisplay.textContent = year - 1;
+    currentYearDisplay.textContent = year;
+    nextYearDisplay.textContent = year + 1;
+  }
+  function updateCalendarHeaderVisibility(year) {
+    calendarHeaderNext.style.display = currentYear1 < currentYear ? "flex" : "none";
+  }
+  function highlightSelectedDay(selectedElement) {
+    const allDays = document.querySelectorAll(".day");
+    allDays.forEach(day => day.classList.remove("selected"));
+    selectedElement.classList.add("selected");
+  }
+  customSelectTrigger.addEventListener("click", () => {
+    customOptions.classList.toggle("show");
+    customArrow.classList.toggle("rotate");
+  });
+  options.forEach(option => {
+    option.addEventListener("click", () => {
+      const value = option.getAttribute("data-value");
+      customSelectTrigger.textContent = option.textContent;
+      currentMonth = parseInt(value);
+      renderCalendar(currentYear, currentMonth);
+      options.forEach(opt => {
+        opt.classList.remove("selected");
+      });
+      option.classList.add("selected");
+      customOptions.classList.remove("show");
+      customArrow.classList.remove("rotate");
+    });
+  });
+  document.addEventListener("click", e => {
+    if (!customSelectTrigger.contains(e.target) && !customOptions.contains(e.target)) {
+      customOptions.classList.remove("show");
+      customArrow.classList.remove("rotate");
+    }
+  });
+  prevYearButton.addEventListener("click", () => {
+    currentYear1--;
+    renderCalendar(currentYear1, currentMonth);
+  });
+  nextYearButton.addEventListener("click", () => {
+    currentYear1++;
+    renderCalendar(currentYear1, currentMonth);
+  });
+  customSelectTrigger.textContent = monthNames[currentMonth];
+  renderCalendar(currentYear, currentMonth);
+}
+
+/***/ }),
+
+/***/ "./src/js/components/inside-menu.js":
+/*!******************************************!*\
+  !*** ./src/js/components/inside-menu.js ***!
+  \******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+window.addEventListener("DOMContentLoaded", () => {
+  const initCategoryMenu = () => {
+    const menu = document.querySelector(".category-menu");
+    if (menu) {
+      const insideLists = document.querySelectorAll(".category-menu__item--has-children");
+      if (insideLists.length > 0) {
+        insideLists.forEach(insideList => {
+          const link = insideList.querySelector("a");
+          console.log(link);
+          if (link) {
+            link.addEventListener("click", e => {
+              e.preventDefault();
+              link.classList.toggle("js-active");
+              link.nextElementSibling.classList.toggle("js-active");
+            });
+          }
+        });
+      }
+    }
+  };
+  initCategoryMenu();
+});
+
+/***/ }),
+
+/***/ "./src/js/components/menu.js":
+/*!***********************************!*\
+  !*** ./src/js/components/menu.js ***!
+  \***********************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var priority_plus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! priority-plus */ "./node_modules/priority-plus/dist/priority-plus.esm.js");
+
+(0,priority_plus__WEBPACK_IMPORTED_MODULE_0__["default"])(document.querySelector(".menu__list"), {
+  innerToggleTemplate: `<div class="menu__more-link">Еще
+              <svg class="menu__link-icon" id="arrowIcon">
+                <use xlink:href="img/sprite.svg#arrow_down"></use>
+              </svg>
+            </div>`
+});
+
+/***/ }),
+
+/***/ "./src/js/components/modals.js":
+/*!*************************************!*\
+  !*** ./src/js/components/modals.js ***!
+  \*************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var graph_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graph-modal */ "./node_modules/graph-modal/src/graph-modal.js");
+
+const modal = new graph_modal__WEBPACK_IMPORTED_MODULE_0__["default"]();
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const loginModal = document.getElementById("loginModal");
+//   const registerModal = document.getElementById("registerModal");
+//   const cityModal = document.getElementsByClassName(".graph-modal__city");
+
+//   const citySearchInput = document.querySelector(".city__search-input");
+//   const citySuggestions = document.querySelector(".city__list ul");
+
+//   //
+
+//   const switchModals = (openModal, closeModal) => {
+//     closeModal.close();
+//     openModal.show();
+//   };
+
+//   citySearchInput.addEventListener("input", () => {
+//     const filter = citySearchInput.value.toLowerCase();
+//     const items = citySuggestions.getElementsByTagName("li");
+
+//     Array.from(items).forEach((item) => {
+//       const text = item.textContent.toLowerCase();
+//       item.style.display = text.includes(filter) ? "" : "none";
+//     });
+//   });
+//   //
+//   document.querySelector(".btn").addEventListener("click", () => {
+//     modal.open(cityModal);
+//   });
+
+//   //
+//   const cityItems = document.querySelectorAll(".city__list-item");
+//   if (cityItems.length > 0) {
+//     const removeClassActie = () => {
+//       cityItems.forEach((item) => {
+//         item.classList.remove("js-active");
+//       });
+//     };
+//     cityItems.forEach((item) => {
+//       item.addEventListener("click", () => {
+//         removeClassActie();
+//         item.classList.add("js-active");
+//         citySearchInput.value = item.querySelector("span").textContent;
+//       });
+//     });
+//   }
+
+//   //
+
+//   document.addEventListener("click", (e) => {
+//     if (
+//       e.target.closest(".js-modal-close") ||
+//       e.target.classList.contains("modal-overlay")
+//     ) {
+//       if (loginModal.classList.contains("is-open")) {
+//         loginModal.close();
+//       } else if (registerModal.classList.contains("is-open")) {
+//         registerModal.close();
+//       }
+//     }
+
+//     if (e.target.closest("#registerLink")) {
+//       e.preventDefault();
+//       switchModals(registerModal, loginModal);
+//     }
+
+//     if (e.target.closest("#registerLink2")) {
+//       e.preventDefault();
+//       switchModals(loginModal, registerModal);
+//     }
+
+//     if (e.target.closest(".form__toggle")) {
+//       const inputField = e.target
+//         .closest(".form__group")
+//         .querySelector(".form__group-input");
+//       const isPasswordVisible = inputField.type === "text";
+
+//       inputField.type = isPasswordVisible ? "password" : "text";
+
+//       const eyeIconUrl = isPasswordVisible
+//         ? 'url("../../img/eye-close.svg")'
+//         : 'url("../../img/eye-open.svg")';
+//       e.target.style.backgroundImage = eyeIconUrl;
+//     }
+//   });
+// });
+
+const cityItems = document.querySelectorAll(".city__list-item");
+if (cityItems.length > 0) {
+  const removeClassActie = () => {
+    cityItems.forEach(item => {
+      item.classList.remove("js-active");
+    });
+  };
+  cityItems.forEach(item => {
+    item.addEventListener("click", () => {
+      removeClassActie();
+      item.classList.add("js-active");
+      citySearchInput.value = item.querySelector("span").textContent;
+    });
+  });
+}
+const showPass = () => {
+  const btns = document.querySelectorAll(".form__toggle");
+  if (btns) {
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const input = btn.previousElementSibling.previousElementSibling;
+        if (input.getAttribute("type") == "password") {
+          btn.classList.add("js-active");
+          input.setAttribute("type", "text");
+        } else {
+          btn.classList.remove("js-active");
+          input.setAttribute("type", "password");
+        }
+      });
+    });
+  }
+};
+showPass();
+
+/***/ }),
+
+/***/ "./src/js/components/scroll.js":
+/*!*************************************!*\
+  !*** ./src/js/components/scroll.js ***!
+  \*************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var simplebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simplebar */ "./node_modules/simplebar/dist/index.mjs");
+
+
+/***/ }),
+
+/***/ "./src/js/components/search.js":
+/*!*************************************!*\
+  !*** ./src/js/components/search.js ***!
+  \*************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// document.addEventListener("DOMContentLoaded", function () {
+//   const searchToggle = document.getElementById('search-toggle');
+//   const searchForm = document.getElementById('search-form');
+//   const searchInput = document.getElementById('search-input');
+//   const closeButton = document.getElementById('close-button');
+//   const searchDropdown = document.getElementById('search-dropdown');
+//   const menuList = document.querySelector('.menu__list');
+//   const searchOverlay = document.querySelector('.search-overlay');
+//   const body = document.body;
+//   const searchButtons = document.querySelector('.header__search-btn');
+//   searchToggle.addEventListener('click', function(event) {
+//       event.preventDefault();
+//       const isVisible = searchForm.style.display === 'flex';
+//       searchForm.style.display = isVisible ? 'none' : 'flex';
+//       menuList.style.display = isVisible ? 'flex' : 'none';
+//       searchToggle.style.display = isVisible ? 'flex' : 'none';
+//       if (!isVisible) {
+//           searchInput.focus();
+//           searchOverlay.style.display = 'flex';
+//           body.classList.add('no-scroll');
+//           if (window.innerWidth <= 1024) {
+//             searchButtons.style.display = 'none';
+//         } else {
+//           body.classList.remove('no-scroll');
+//           searchButtons.style.display = 'flex';
+//       }
+//       };
+//     });
+//   searchInput.addEventListener('input', function() {
+//       const query = searchInput.value.trim();
+//       closeButton.style.display = query ? 'flex' : 'none';
+//       if (query) {
+//         searchDropdown.classList.add('visible');
+//         searchDropdown.innerHTML = '';
+//         const results = [
+//             { text: 'Результат 1', icon: 'img/sprite.svg#search' },
+//             { text: 'Результат 2', icon: 'img/sprite.svg#search' },
+//             { text: 'Результат 3', icon: 'img/sprite.svg#search' },
+//             { text: 'Результат 1', icon: 'img/sprite.svg#search' },
+//             { text: 'Результат 2', icon: 'img/sprite.svg#search' },
+//             { text: 'Результат 3', icon: 'img/sprite.svg#search' },
+//             { text: 'Результат 1', icon: 'img/sprite.svg#search' },
+//             { text: 'Результат 2', icon: 'img/sprite.svg#search' },
+//             { text: 'Результат 3', icon: 'img/sprite.svg#search' },
+//         ];
+//           results.forEach(result => {
+//               const resultItem = document.createElement('div');
+//               resultItem.classList.add('search-result');
+//               resultItem.innerHTML = `<svg class="result-icon"><use xlink:href="${result.icon}"></use></svg>${result.text}`;
+//               searchDropdown.appendChild(resultItem);
+//           });
+//       }
+//   });
+// //   searchOverlay.addEventListener('click', function() {
+// //     searchForm.classList.remove('active');
+// //     searchOverlay.classList.remove('active');
+// // });
+//   searchOverlay.addEventListener('click', function() {
+//       closeSearch();
+//   });
+//   function closeSearch() {
+//     searchForm.style.display = 'none';
+//     searchToggle.style.display = 'flex';
+//     searchInput.value = '';
+//     searchOverlay.style.display = 'none';
+//     closeButton.style.display = 'none';
+//     searchDropdown.classList.remove('visible');
+//     body.classList.remove('no-scroll');
+//     searchButtons.style.display = 'flex';
+//   };
+// });
+
+const searchFunc = () => {
+  const btn = document.querySelector("[data-search-btn]");
+  const form = document.querySelector("[data-search-form]");
+  const input = document.querySelector("[data-search-input]");
+  const dropdown = document.querySelector("[data-search-dropdown]");
+  const close = document.querySelector("[data-search-close]");
+  const shadow = document.querySelector("[data-search-shadow]");
+  const body = document.querySelector("body");
+  const closeSearch = () => {
+    shadow.classList.remove("js-active");
+    form.classList.remove("js-active");
+    dropdown.classList.remove("js-active");
+    input.value = "";
+    body.classList.remove("js-hidden");
+    unlockPadding();
+  };
+  function lockPadding() {
+    let paddingOffset = window.innerWidth - document.body.offsetWidth + "px";
+    document.body.style.paddingRight = paddingOffset;
+  }
+  function unlockPadding() {
+    document.body.style.paddingRight = "0px";
+  }
+  window.addEventListener("keydown", event => {
+    if (event.key === "Escape" && form.classList.contains("js-active")) {
+      closeSearch();
+    }
+  });
+  if (btn) {
+    btn.addEventListener("click", () => {
+      form.classList.toggle("js-active");
+      shadow.classList.toggle("js-active");
+      lockPadding();
+      body.classList.add("js-hidden");
+    });
+  }
+  if (input) {
+    input.addEventListener("input", () => {
+      if (input.value.length > 2) {
+        dropdown.classList.add("js-active");
+      } else {
+        dropdown.classList.remove("js-active");
+      }
+    });
+  }
+  if (shadow) {
+    shadow.addEventListener("click", () => {
+      closeSearch();
+    });
+    close.addEventListener("click", () => {
+      closeSearch();
+    });
+  }
+};
+searchFunc();
+
+/***/ }),
+
+/***/ "./src/js/components/slider.js":
+/*!*************************************!*\
+  !*** ./src/js/components/slider.js ***!
+  \*************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.mjs");
+/* harmony import */ var swiper_modules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/modules */ "./node_modules/swiper/modules/index.mjs");
+
+
+swiper__WEBPACK_IMPORTED_MODULE_0__["default"].use([swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Autoplay, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Pagination]);
+var swiper1 = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](".swiper__banner", {
+  centeredSlides: true,
+  effect: "fade",
+  loop: true,
+  fadeEffect: {
+    crossFade: true
+  },
+  speed: 300,
+  // autoplay: {
+  //   delay: 3000,
+  //   disableOnInteraction: false,
+  // },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+    renderBullet: function (index, className) {
+      return `<span class="${className}"><svg width="20" height="20" viewBox="0 0 20 20">
+            <circle class="progress-circle" cx="10" cy="10" r="9" />
+            <circle class="progress-svg" cx="10" cy="10" r="9" />
+          </svg></span>`;
+    }
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev"
+  },
+  on: {
+    slideChange: function () {
+      const circles = document.querySelectorAll(".swiper-pagination-bullet .progress-circle");
+      circles.forEach(circle => circle.style.display = "none");
+      const activeCircle = document.querySelector(".swiper-pagination-bullet-active .progress-circle");
+      if (activeCircle) {
+        activeCircle.style.display = "block";
+      }
+      const bullets = document.querySelectorAll(".swiper-pagination-bullet .progress-svg");
+      bullets.forEach(bullet => bullet.style.display = "none");
+      const activeBullet = document.querySelector(".swiper-pagination-bullet-active .progress-svg");
+      if (activeBullet) {
+        activeBullet.style.display = "block";
+        const circumference = 2 * Math.PI * 9;
+        activeBullet.style.strokeDasharray = circumference;
+        activeBullet.style.strokeDashoffset = circumference;
+      }
+    },
+    autoplayTimeLeft: function (s, time, progress) {
+      const activeBullet = document.querySelector(".swiper-pagination-bullet-active .progress-svg");
+      if (activeBullet) {
+        const circumference = 2 * Math.PI * 9;
+        const offset = circumference - circumference * (1 - progress);
+        activeBullet.style.strokeDashoffset = offset;
+      }
+    }
+  }
+});
+let swiper2 = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](".news__swiper", {
+  slidesPerView: "auto",
+  loop: true,
+  // centeredSlides: true,
+  effect: "slide",
+  speed: 1000,
+  loopAdditionalSlides: 10,
+  breakpoints: {
+    // 375: {
+    //   slidesPerView: 1.5,
+    // },
+    // 768: {
+    //   slidesPerView: 4,
+    // },
+    // 1024: {
+    //   slidesPerView: 3,
+    // },
+  },
+  navigation: {
+    nextEl: ".news__btn-next",
+    prevEl: ".news__btn-prev"
+  }
+});
+
+/***/ }),
+
+/***/ "./src/js/components/valid.js":
+/*!************************************!*\
+  !*** ./src/js/components/valid.js ***!
+  \************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../functions/validate-forms.js */ "./src/js/functions/validate-forms.js");
+
+const rules1 = [{
+  ruleSelector: ".input-email",
+  rules: [{
+    rule: "minLength",
+    value: 5
+  }, {
+    rule: "required",
+    value: true,
+    errorMessage: "Текст ошибки"
+  }]
+}, {
+  ruleSelector: ".input-tel",
+  tel: true,
+  telError: "Текст ошибки",
+  rules: [{
+    rule: "required",
+    value: true,
+    errorMessage: "Текст ошибки"
+  }]
+}, {
+  ruleSelector: ".input-name",
+  tel: false,
+  rules: [{
+    rule: "required",
+    value: true,
+    errorMessage: "Текст ошибки"
+  }]
+}, {
+  ruleSelector: ".input-password",
+  tel: false,
+  rules: [{
+    rule: "minLength",
+    value: 5
+  }, {
+    rule: "required",
+    value: true,
+    errorMessage: "Текст ошибки"
+  }]
+}, {
+  ruleSelector: ".input-password-again",
+  tel: false,
+  rules: [{
+    rule: "minLength",
+    value: 5
+  }, {
+    rule: "required",
+    value: true,
+    errorMessage: "Текст ошибки"
+  }]
+}];
+const rules2 = [{
+  ruleSelector: ".input-email",
+  rules: [{
+    rule: "minLength",
+    value: 5
+  }, {
+    rule: "required",
+    value: true,
+    errorMessage: "Текст ошибки"
+  }]
+}, {
+  ruleSelector: ".input-password",
+  tel: false,
+  rules: [{
+    rule: "minLength",
+    value: 5
+  }, {
+    rule: "required",
+    value: true,
+    errorMessage: "Текст ошибки"
+  }]
+}];
+const afterForm = () => {
+  console.log("Произошла отправка, тут можно писать любые действия");
+};
+(0,_functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_0__.validateForms)(".register-form", rules1, afterForm);
+(0,_functions_validate_forms_js__WEBPACK_IMPORTED_MODULE_0__.validateForms)(".login-form", rules2, afterForm);
+
+/***/ }),
+
+/***/ "./src/js/functions/validate-forms.js":
+/*!********************************************!*\
+  !*** ./src/js/functions/validate-forms.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   validateForms: () => (/* binding */ validateForms)
+/* harmony export */ });
+/* harmony import */ var just_validate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! just-validate */ "./node_modules/just-validate/dist/just-validate.es.js");
+/* harmony import */ var _node_modules_inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/inputmask/dist/inputmask.es6.js */ "./node_modules/inputmask/dist/inputmask.es6.js");
+
+
+const validateForms = function (selector, rules) {
+  let checkboxes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  let afterSend = arguments.length > 3 ? arguments[3] : undefined;
+  const form = document?.querySelector(selector);
+  const telSelector = form?.querySelector('input[type="tel"]');
+  if (!form) {
+    console.error("Нет такого селектора!");
+    return false;
+  }
+  if (!rules) {
+    console.error("Вы не передали правила валидации!");
+    return false;
+  }
+  if (telSelector) {
+    const inputMask = new _node_modules_inputmask_dist_inputmask_es6_js__WEBPACK_IMPORTED_MODULE_1__["default"]("+7 (999) 999-99-99");
+    inputMask.mask(telSelector);
+    for (let item of rules) {
+      if (item.tel) {
+        item.rules.push({
+          rule: "function",
+          validator: function () {
+            const phone = telSelector.inputmask.unmaskedvalue();
+            return phone.length === 10;
+          },
+          errorMessage: item.telError
+        });
+      }
+    }
+  }
+  const validation = new just_validate__WEBPACK_IMPORTED_MODULE_0__["default"](selector);
+  for (let item of rules) {
+    validation.addField(item.ruleSelector, item.rules);
+  }
+  if (checkboxes.length) {
+    for (let item of checkboxes) {
+      validation.addRequiredGroup(`${item.selector}`, `${item.errorMessage}`);
+    }
+  }
+  validation.onSuccess(ev => {
+    let formData = new FormData(ev.target);
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          if (afterSend) {
+            afterSend();
+          }
+          // console.log('Отправлено');
+        }
+      }
+    };
+
+    // xhr.open('POST', 'mail.php', true);
+    // xhr.send(formData);
+
+    ev.target.reset();
+  });
+};
 
 /***/ })
 
@@ -18972,6 +19441,18 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -18990,7 +19471,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 (() => {
 "use strict";
 /*!************************!*\

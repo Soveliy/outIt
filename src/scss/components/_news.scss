@@ -8,6 +8,9 @@
     position: relative;
     display: flex;
     justify-content: space-between;
+    &-content {
+      position: relative;
+    }
   }
 
   &__title {
@@ -32,6 +35,7 @@
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     overflow: hidden;
+    width: 343px;
     &-box {
       display: flex;
       gap: 15px;
@@ -148,10 +152,12 @@
   }
 
   &__btn {
+    top: 0;
+    left: auto;
     &-next {
       position: absolute;
-      top: 18%;
-      left: 86.5%;
+      top: 0;
+      right: 0;
       width: 46px;
       height: 46px;
       border: 1.6px solid var(--blue);
@@ -160,7 +166,7 @@
       background-image: url(../../img/arrow_right-blue.svg);
       background-repeat: no-repeat;
       background-position: center;
-
+      margin-top: 0;
       &:after {
         content: "";
       }
@@ -168,8 +174,9 @@
 
     &-prev {
       position: absolute;
-      top: 18%;
-      left: 83.5%;
+      top: 0;
+      right: 56px;
+      left: auto;
       border: 1.6px solid var(--blue);
       border-radius: 40px;
       padding: 20px 20px;
@@ -178,6 +185,7 @@
       background-image: url(../../img/arrow_left-blue.svg);
       background-repeat: no-repeat;
       background-position: center;
+      margin-top: 0;
 
       &:after {
         content: "";
@@ -219,34 +227,12 @@
         gap: 20px;
       }
     }
-
-    &__btn {
-      &-next {
-        top: 11%;
-        left: 92.5%;
-      }
-
-      &-prev {
-        top: 11%;
-        left: 87%;
-      }
-    }
   }
 }
 
 @media (max-width: 798px) {
   .news {
     padding-top: 43px;
-    &__btn {
-      &-prev {
-        top: 11%;
-        left: 83%;
-      }
-      &-next {
-        top: 11%;
-        left: 90%;
-      }
-    }
   }
 }
 @media (max-width: 376px) {

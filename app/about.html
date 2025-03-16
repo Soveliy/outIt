@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="theme-color" content="#111111" />
+  <title>OUT IT</title>
+  <link rel="preload" href="fonts/Inter-Medium.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="preload" href="fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="preload" href="fonts/Inter-SemiBold.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="stylesheet" href="css/vendor.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script defer src="js/main.js"></script>
+</head>
+
+<body class="page__body">
+  <div class="site-container">
+    <header class="header">
+  <div class="header__offer">
+    <div class="container">
+      <div class="header__offer-row">
+        <div class="header__offer-content">
+          <div class="header__offer-desc">
+            Здравствуйте, вы находитесь на демо версии решения
+            <a href="#" class="header__offer-link">
+              «OUT IT: Сайт совета муниципальных образований»
+            </a>
+          </div>
+
+        </div>
+        <div class="header__offer-btns">
+          <a href="#" class="header__offer-button">Купить решение</a>
+          <a href="#" class="header__offer-buttonStroke">подробнее</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header__info header__info--desk">
+    <div class="container">
+      <div class="header__info-row">
+        <div class="header__info-contacts">
+          <a href="#" class="header__info-modal btn" data-graph-path="header__city">
+            <svg class="header__info-icon">
+              <use xlink:href="img/sprite.svg#geo"></use>
+            </svg>
+            <span>Москва</span>
+          </a>
+          <a href="#" class="header__info-address">Москва, ул. Карла Маркса, д. 37, корп. 1</a>
+          <a href="tel:+74958008070" class="header__info-link">+ 7 (495) 800 80 70</a>
+          <a href="mailto:out_it@gmail.com" class="header__info-link">out_it@gmail.com</a>
+        </div>
+        <div class="header__site-options">
+          <a href="#" class="header__site-option" data-change-versrion>
+            <svg class="header__info-glasses">
+              <use xlink:href="img/sprite.svg#glasses"></use>
+            </svg>
+            <span class="header__site-options-text">Для слабовидящих</span>
+          </a>
+          <a href="#" class="header__site-option">
+            <img src="img/FlagEngland.svg" alt="" />
+            <span class="header__site-options-text">English version</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header__menu menu">
+    <div class="container">
+      <div class="header__menu-row">
+        <a href="#" class="header__logo">
+          <img src="img/Logo.svg" alt="">
+        </a>
+        <div class="menu__wrapper">
+
+          <ul class="menu__list">
+            <li class="menu__item">
+              <a href="#about" class="menu__link">О совете</a>
+            </li>
+            <li class="menu__item">
+              <a href="#news" class="menu__link">Новости</a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">Деятельность</a>
+            </li>
+            <li class="menu__item">
+              <a href="#documents" class="menu__link">Документы</a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">Обращения</a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">Пресс-центр</a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">Контакты</a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">Пункт меню 1</a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">Пункт меню 2 с длинным текстом на несколько строк</a>
+            </li>
+            <li class="menu__item">
+              <a href="#" class="menu__link">Пункт меню 3</a>
+            </li>
+
+          </ul>
+          <!-- <div class="menu__more">
+
+            <div class="menu__more-link">Еще
+              <svg class="menu__link-icon" id="arrowIcon">
+                <use xlink:href="img/sprite.svg#arrow_down"></use>
+              </svg>
+            </div>
+
+            <ul class="menu-inside">
+
+            </ul>
+
+          </div> -->
+
+        </div>
+
+        <div class="header__right">
+
+          <div class="header__search search">
+            <button class="search__button" data-search-btn>
+              <svg class="search-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+            </button>
+            <form action="" class="search__form" data-search-form>
+              <input type="text" class="search__input" placeholder="Введите запрос..." data-search-input>
+              <button type="submit" class="search__to-search">
+                <svg>
+                  <use xlink:href="img/sprite.svg#search"></use>
+                </svg>
+              </button>
+              <button class="search__close" data-search-close>
+                <img src="img/close.svg" alt="close-icon" class="header__icon-close">
+              </button>
+              <div class="search__dropdown" data-simplebar data-search-dropdown>
+                <ul class="search__list list-reset">
+                  <li class="search__item">
+                    <a href="#" class="search__link">
+                      <svg>
+                        <use xlink:href="img/sprite.svg#search"></use>
+                      </svg>
+                      <b>Нов</b>ости
+                    </a>
+                  </li>
+                  <li class="search__item">
+                    <a href="#" class="search__link">
+                      <svg>
+                        <use xlink:href="img/sprite.svg#search"></use>
+                      </svg>
+                      <b>Нов</b>ости
+                    </a>
+                  </li>
+                  <li class="search__item">
+                    <a href="#" class="search__link">
+                      <svg>
+                        <use xlink:href="img/sprite.svg#search"></use>
+                      </svg>
+                      <b>Нов</b>ости
+                    </a>
+                  </li>
+                  <li class="search__item">
+                    <a href="#" class="search__link">
+                      <svg>
+                        <use xlink:href="img/sprite.svg#search"></use>
+                      </svg>
+                      <b>Нов</b>ости
+                    </a>
+                  </li>
+                  <li class="search__item">
+                    <a href="#" class="search__link">
+                      <svg>
+                        <use xlink:href="img/sprite.svg#search"></use>
+                      </svg>
+                      <b>Нов</b>ости
+                    </a>
+                  </li>
+                  <li class="search__item">
+                    <a href="#" class="search__link">
+                      <svg>
+                        <use xlink:href="img/sprite.svg#search"></use>
+                      </svg>
+                      <b>Нов</b>ости
+                    </a>
+                  </li>
+                  <li class="search__item">
+                    <a href="#" class="search__link">
+                      <svg>
+                        <use xlink:href="img/sprite.svg#search"></use>
+                      </svg>
+                      <b>Нов</b>ости
+                    </a>
+                  </li>
+                  <li class="search__item">
+                    <a href="#" class="search__link">
+                      <svg>
+                        <use xlink:href="img/sprite.svg#search"></use>
+                      </svg>
+                      <b>Нов</b>ости
+                    </a>
+                  </li>
+                  <li class="search__item">
+                    <a href="#" class="search__link">
+                      <svg>
+                        <use xlink:href="img/sprite.svg#search"></use>
+                      </svg>
+                      <b>Нов</b>ости
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+            </form>
+            <div class="search__bgshadow" data-search-shadow></div>
+          </div>
+          <button class="button header__button button--default button--primary button--text-desktop modal-button "
+            data-graph-path="loginModal">
+            <svg class="button__icon button__icon--left">
+              <use xlink:href="img/sprite.svg#singup"></use>
+            </svg>
+            <span class="button__text button__text--desktop">Войти</span>
+          </button>
+          <button
+            class="button header__button  header__button--desk button--default button--primary-round button--text-desktop modal-button">
+            <svg class="button__icon button__icon--left">
+              <use xlink:href="img/sprite.svg#write"></use>
+            </svg>
+            <span class="button__text button__text--desktop">Написать нам</span>
+          </button>
+          <button class="header__burger burger" data-burger>
+            <div class="burger__icons">
+              <svg class="burger__btn-icon">
+                <use xlink:href="img/sprite.svg#catalog"></use>
+              </svg>
+              <svg class="burger__close-icon">
+                <use xlink:href="img/sprite.svg#close"></use>
+              </svg>
+            </div>
+            <span>Меню</span>
+          </button>
+          <div class="mobile-menu">
+            <div class="header__info header__info--mobile">
+              <div class="header__info-row">
+                <div class="header__info-contacts">
+                  <a href="#" class="header__info-modal btn" data-graph-path="header__city">
+                    <svg class="header__info-icon">
+                      <use xlink:href="img/sprite.svg#geo"></use>
+                    </svg>
+                    <span>Москва</span>
+                  </a>
+                </div>
+                <div class="header__site-options">
+                  <a href="#" class="header__site-option" data-change-versrion>
+                    <svg class="header__info-glasses">
+                      <use xlink:href="img/sprite.svg#glasses"></use>
+                    </svg>
+                    <span class="header__site-options-text">Для слабовидящих</span>
+                  </a>
+                  <a href="#" class="header__site-option">
+                    <img src="img/FlagEngland.svg" alt="" />
+                    <span class="header__site-options-text">English version</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <ul class="menu__list">
+              <li class="menu__item">
+                <a href="#about" class="menu__link">О совете</a>
+              </li>
+              <li class="menu__item">
+                <a href="#news" class="menu__link">Новости</a>
+              </li>
+              <li class="menu__item">
+                <a href="#" class="menu__link">Деятельность</a>
+              </li>
+              <li class="menu__item">
+                <a href="#documents" class="menu__link">Документы</a>
+              </li>
+              <li class="menu__item">
+                <a href="#" class="menu__link">Обращения</a>
+              </li>
+              <li class="menu__item">
+                <a href="#" class="menu__link">Пресс-центр</a>
+              </li>
+              <li class="menu__item">
+                <a href="#" class="menu__link">Контакты</a>
+              </li>
+              <li class="menu__item">
+                <a href="#" class="menu__link">Пункт меню 1</a>
+              </li>
+              <li class="menu__item">
+                <a href="#" class="menu__link">Пункт меню 2 с длинным текстом на несколько строк</a>
+              </li>
+              <li class="menu__item">
+                <a href="#" class="menu__link">Пункт меню 3</a>
+              </li>
+
+            </ul>
+            <div class="mobile-menu__footer">
+              <a href="tel:+74958008070" class="mobile-menu__link mobile-menu__link--big">+ 7 (495) 800 80 70</a>
+              <a href="mailto:out_it@gmail.com" class="mobile-menu__link">out_it@gmail.com</a>
+              <div class="mobile-menu__adress">
+                Москва, ул. Карла Маркса, д. 37, корп. 1
+              </div>
+              <button class="mobile-menu__button button button--default button--primary-round modal-button">
+                <svg class="button__icon button__icon--left">
+                  <use xlink:href="img/sprite.svg#write"></use>
+                </svg>
+                <span class="button__text">Написать нам</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</header>
+    <main class="main">
+      <div class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <div class="container">
+          <nav class="breadcrumbs__nav" aria-label="Breadcrumb">
+            <ul class="breadcrumbs__list list-reset">
+              <li class="breadcrumbs__item" itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem">
+                <a class="breadcrumbs__link" href="#" itemprop="item">
+                  <span itemprop="name">Главная</span>
+                  <svg class="">
+                    <use xlink:href="img/sprite.svg#bread_arrow"></use>
+                  </svg>
+                </a>
+                <meta itemprop="position" content="1" />
+              </li>
+              <li class="breadcrumbs__item" itemscope itemprop="itemListElement" itemtype="https://schema.org/ListItem">
+                <span class="breadcrumbs__link" itemprop="name">О совете</span>
+                <meta itemprop="position" content="2" />
+              </li>
+
+            </ul>
+          </nav>
+        </div>
+        <div class="inside-page">
+          <div class="container">
+            <div class="inside-page__row">
+              <aside class="inside-page__left">
+                <h1 class="inside-page__title">
+                  О совете
+                </h1>
+                <nav class="category-menu inside-page__category-menu">
+                  <ul class="category-menu__list">
+                    <li class="category-menu__item"><a href="#" class="category-menu__link">Структура</a></li>
+                    <li class="category-menu__item"><a href="#" class="category-menu__link">Председатель правления</a>
+                    </li>
+                    <li class="category-menu__item"><a href="#" class="category-menu__link">Президиум Совета</a></li>
+                    <li class="category-menu__item"><a href="#" class="category-menu__link">Ревизионная комиссия
+                        Совета</a></li>
+                    <li class="category-menu__item"><a href="#" class="category-menu__link">Исполнительная дирекция
+                        Совета</a></li>
+
+                    <li class="category-menu__item category-menu__item--has-children">
+                      <a href="#" class="category-menu__link">
+                        Члены ассоциации
+                        <svg class="">
+                          <use xlink:href="img/sprite.svg#arrow_down"></use>
+                        </svg>
+                      </a>
+                      <ul class="category-menu__sublist">
+                        <li class="category-menu__subitem"><a href="#" class="category-menu__link">Президиум Совета</a>
+                        </li>
+                        <li class="category-menu__subitem"><a href="#" class="category-menu__link">Ревизионная комиссия
+                            Совета</a></li>
+                        <li class="category-menu__subitem"><a href="#" class="category-menu__link">Исполнительная
+                            дирекция Совета</a></li>
+
+                        <li class="category-menu__subitem category-menu__item--has-children">
+                          <a href="#" class="category-menu__link">
+                            Палаты Совета
+                            <svg class="">
+                              <use xlink:href="img/sprite.svg#arrow_down"></use>
+                            </svg>
+                          </a>
+                          <ul class="category-menu__sublist">
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата
+                                муниципальных районов</a></li>
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата городских
+                                округов</a></li>
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата городских
+                                поселений</a></li>
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата сельских
+                                поселений</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <li class="category-menu__item category-menu__item--has-children">
+                      <a href="#" class="category-menu__link">
+                        Муниципальные образования
+                        <svg class="">
+                          <use xlink:href="img/sprite.svg#arrow_down"></use>
+                        </svg>
+                      </a>
+                      <ul class="category-menu__sublist">
+                        <li class="category-menu__subitem"><a href="#" class="category-menu__link">Президиум Совета</a>
+                        </li>
+                        <li class="category-menu__subitem"><a href="#" class="category-menu__link">Ревизионная комиссия
+                            Совета</a></li>
+                        <li class="category-menu__subitem"><a href="#" class="category-menu__link">Исполнительная
+                            дирекция Совета</a></li>
+
+                        <li class="category-menu__subitem category-menu__item--has-children">
+                          <a href="#" class="category-menu__link">
+                            Палаты Совета
+                            <svg class="">
+                              <use xlink:href="img/sprite.svg#arrow_down"></use>
+                            </svg>
+                          </a>
+                          <ul class="category-menu__sublist">
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата
+                                муниципальных районов</a></li>
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата городских
+                                округов</a></li>
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата городских
+                                поселений</a></li>
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата сельских
+                                поселений</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="category-menu__item category-menu__item--has-children">
+                      <a href="#" class="category-menu__link">
+                        Кадровое обеспечение
+                        <svg class="">
+                          <use xlink:href="img/sprite.svg#arrow_down"></use>
+                        </svg>
+                      </a>
+                      <ul class="category-menu__sublist">
+                        <li class="category-menu__subitem"><a href="#" class="category-menu__link">Президиум Совета</a>
+                        </li>
+                        <li class="category-menu__subitem"><a href="#" class="category-menu__link">Ревизионная комиссия
+                            Совета</a></li>
+                        <li class="category-menu__subitem"><a href="#" class="category-menu__link">Исполнительная
+                            дирекция Совета</a></li>
+
+                        <li class="category-menu__subitem category-menu__item--has-children">
+                          <a href="#" class="category-menu__link">
+                            Палаты Совета
+                            <svg class="">
+                              <use xlink:href="img/sprite.svg#arrow_down"></use>
+                            </svg>
+                          </a>
+                          <ul class="category-menu__sublist">
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата
+                                муниципальных районов</a></li>
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата городских
+                                округов</a></li>
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата городских
+                                поселений</a></li>
+                            <li class="category-menu__subitem"><a href="#" class="category-menu__link">Палата сельских
+                                поселений</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="main-links inside-page__main-links">
+                  <button class="main__bottom-item">
+                    <div class="main__bottom-content">
+                      <h4 class="main__bottom-title">Федеральный портал Госуслуг</h4>
+                      <a href="#" class="main__bottom-link">gosuslugi.ru</a>
+                    </div>
+                    <img src="img/gosuslugi.svg" alt="Gosuslugi.ru" class="main__bottom-img">
+                  </button>
+                  <button class="main__bottom-item">
+                    <h4 class="main__bottom-title">Противодействие коррупции</h4>
+                    <svg class="main__bottom-icon" width="60" height="60" viewBox="0 0 60 60"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M29.9929 9.60657C27.5443 9.60657 27.0862 11.8596 27.2284 14.1903L27.5917 22.4409C27.7104 22.9826 28.0142 23.468 28.4526 23.8162C28.8909 24.1644 29.4373 24.3542 30.0008 24.3542C30.5642 24.3542 31.1106 24.1644 31.5489 23.8162C31.9873 23.468 32.2911 22.9826 32.4098 22.4409L32.7731 14.1903C32.9153 11.7353 32.4572 9.60657 29.9929 9.60657Z"
+                        stroke-miterlimit="10"></path>
+                      <path
+                        d="M29.9923 32.9133C31.4842 32.9133 32.6936 31.7238 32.6936 30.2563C32.6936 28.7889 31.4842 27.5994 29.9923 27.5994C28.5004 27.5994 27.291 28.7889 27.291 30.2563C27.291 31.7238 28.5004 32.9133 29.9923 32.9133Z"
+                        stroke-miterlimit="10"></path>
+                      <path
+                        d="M56.1991 50.3159H54.8248C54.7798 48.6169 54.3374 46.951 53.5319 45.4474C52.7265 43.9438 51.5797 42.6429 50.1805 41.6457C50.5108 41.313 50.6976 40.8677 50.7018 40.4027V40.2007C50.6977 39.7336 50.5061 39.287 50.1688 38.9582C49.8315 38.6294 49.3759 38.4449 48.901 38.4449H48.3639L45.6468 9.80852C45.4857 8.14211 44.6988 6.59464 43.4398 5.46835C42.1808 4.34206 40.5402 3.71786 38.8384 3.71765H21.1932C19.4897 3.71751 17.8471 4.34118 16.5856 5.46716C15.324 6.59315 14.5338 8.14078 14.369 9.80852L11.6361 38.4449H11.099C10.6241 38.4449 10.1684 38.6294 9.83117 38.9582C9.4939 39.287 9.30235 39.7336 9.29818 40.2007V40.4027C9.30243 40.8677 9.48921 41.313 9.81948 41.6457C8.42029 42.6429 7.27347 43.9438 6.46804 45.4474C5.66261 46.951 5.22023 48.6169 5.17519 50.3159H3.80084C3.32596 50.3159 2.87029 50.5003 2.53301 50.8292C2.19574 51.158 2.00417 51.6046 2 52.0717V54.5267C2.00417 54.9938 2.19574 55.4403 2.53301 55.7691C2.87029 56.098 3.32596 56.2825 3.80084 56.2824H56.1991C56.674 56.2825 57.1297 56.098 57.467 55.7691C57.8043 55.4403 57.9958 54.9938 58 54.5267V52.0717C57.9958 51.6046 57.8043 51.158 57.467 50.8292C57.1297 50.5003 56.674 50.3159 56.1991 50.3159Z"
+                        stroke-width="1.6" stroke-miterlimit="10"></path>
+                      <path
+                        d="M29.9929 9.60657C27.5443 9.60657 27.0862 11.8596 27.2284 14.1903L27.5917 22.4409C27.7104 22.9826 28.0142 23.468 28.4526 23.8162C28.8909 24.1644 29.4373 24.3542 30.0008 24.3542C30.5642 24.3542 31.1106 24.1644 31.5489 23.8162C31.9873 23.468 32.2911 22.9826 32.4098 22.4409L32.7731 14.1903C32.9153 11.7353 32.4572 9.60657 29.9929 9.60657Z"
+                        stroke-miterlimit="10"></path>
+                      <path
+                        d="M29.9923 32.9135C31.4842 32.9135 32.6936 31.7239 32.6936 30.2565C32.6936 28.7891 31.4842 27.5995 29.9923 27.5995C28.5004 27.5995 27.291 28.7891 27.291 30.2565C27.291 31.7239 28.5004 32.9135 29.9923 32.9135Z"
+                        stroke-miterlimit="10"></path>
+                      <path d="M56.1991 50.6733H3.80078" stroke-miterlimit="10"></path>
+                      <path d="M48.2993 38.8024H11.0977" stroke-miterlimit="10"></path>
+                      <path d="M9.3125 42.0342H49.9895" stroke-miterlimit="10"></path>
+                    </svg>
+                  </button>
+                  <button class="main__bottom-item">
+                    <h4 class="main__bottom-title">Политика обработки персональных данных</h4>
+                    <svg class="main__bottom-icon" width="60" height="60" viewBox="0 0 60 60"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_2667_4415)">
+                        <path
+                          d="M6.92056 44.9725L1.3944 48.6686C1.29742 48.729 1.21385 48.8087 1.14882 48.9026C1.08379 48.9966 1.03867 49.1029 1.01626 49.215C0.993848 49.327 0.994613 49.4425 1.0185 49.5542C1.04239 49.666 1.0889 49.7716 1.15517 49.8647C1.22679 49.9829 1.33049 50.0783 1.45421 50.1398L6.23876 52.7474V57.9865C6.23876 58.098 6.26072 58.2085 6.3034 58.3115C6.34608 58.4145 6.40865 58.5082 6.48751 58.587C6.56637 58.6659 6.65998 58.7284 6.76302 58.7711C6.86605 58.8138 6.9765 58.8358 7.08802 58.8358C7.23935 58.8329 7.38749 58.7917 7.51863 58.7161L16.9442 53.1541C17.1258 53.0442 17.2597 52.8703 17.3195 52.6666C17.3793 52.4629 17.3606 52.2443 17.2671 52.0537L16.1428 49.6614M42.7329 52.0537C42.6405 52.2457 42.6237 52.4654 42.6857 52.6692C42.7478 52.8731 42.8841 53.0461 43.0678 53.1541L52.4815 58.7161C52.611 58.7895 52.7572 58.8281 52.9061 58.8281C53.0549 58.8281 53.2012 58.7895 53.3307 58.7161C53.4618 58.6418 53.5708 58.534 53.6465 58.4037C53.7222 58.2734 53.7618 58.1252 53.7613 57.9745V52.7355L58.5459 50.1279C58.6481 50.073 58.7382 49.9981 58.8108 49.9076C58.8833 49.8171 58.9368 49.7129 58.9681 49.6012C58.9994 49.4894 59.0078 49.3726 58.9928 49.2575C58.9778 49.1425 58.9397 49.0317 58.8808 48.9317C58.8118 48.8133 58.718 48.7113 58.6057 48.6327L53.0795 44.9366"
+                          stroke="#252525" stroke-miterlimit="10"></path>
+                        <path
+                          d="M11.7168 52.4485L16.3219 53.2379C16.4741 53.263 16.6301 53.2462 16.7734 53.1893C16.9167 53.1324 17.0418 53.0375 17.1353 52.915C17.2297 52.7896 17.2875 52.6405 17.3022 52.4842C17.317 52.328 17.2882 52.1707 17.219 52.0298L16.1784 49.8409M43.9647 49.3624L42.7446 52.0298C42.6957 52.1303 42.6672 52.2395 42.6606 52.351C42.654 52.4626 42.6694 52.5743 42.7061 52.6799C42.7428 52.7855 42.7999 52.8828 42.8743 52.9662C42.9486 53.0496 43.0387 53.1176 43.1393 53.1661C43.3005 53.2383 43.4789 53.2632 43.6537 53.2379L48.4382 52.4365"
+                          stroke-miterlimit="10"></path>
+                        <path
+                          d="M13.4981 38.4178C13.3998 38.2176 13.2277 38.0634 13.018 37.9875C12.8083 37.9117 12.5773 37.9201 12.3737 38.0111C10.1357 38.9829 8.10535 40.3757 6.39304 42.1138C6.28429 42.2434 6.21609 42.402 6.19694 42.5701C6.1778 42.7381 6.20856 42.9081 6.28539 43.0588L10.9623 51.9939C11.0354 52.1304 11.144 52.2447 11.2766 52.3247C11.4092 52.4047 11.561 52.4475 11.7158 52.4485C11.8353 52.4453 11.9529 52.4182 12.0618 52.3689C12.1707 52.3196 12.2686 52.249 12.3498 52.1614C12.8169 51.6726 13.3387 51.2392 13.9048 50.8696C15.4874 49.8169 17.2056 48.984 19.0123 48.3936C19.2239 48.3225 19.3991 48.1709 19.4998 47.9717C19.6005 47.7725 19.6188 47.5416 19.5506 47.329C19.5084 47.2135 19.4433 47.1076 19.3592 47.018C16.9841 44.4623 15.0082 41.5629 13.4981 38.4178Z"
+                          stroke-miterlimit="10"></path>
+                        <path
+                          d="M47.5284 38.0111C47.3248 37.9201 47.0938 37.9117 46.8841 37.9875C46.6744 38.0634 46.5023 38.2176 46.404 38.4178C44.9031 41.5653 42.9307 44.4654 40.5549 47.018C40.3971 47.1771 40.3086 47.392 40.3086 47.6161C40.3086 47.8401 40.3971 48.0551 40.5549 48.2141C40.6483 48.2966 40.7585 48.3578 40.8779 48.3936C42.681 48.9835 44.3953 49.8165 45.9734 50.8696C46.5368 51.2383 47.0582 51.6675 47.5284 52.1494C47.6006 52.2347 47.6892 52.3046 47.7889 52.3551C47.8886 52.4056 47.9973 52.4357 48.1088 52.4435C48.2203 52.4513 48.3322 52.4367 48.4379 52.4006C48.5437 52.3644 48.6411 52.3075 48.7245 52.2331C48.8017 52.1651 48.8665 52.0842 48.9159 51.9939L53.5928 43.0588C53.6728 42.9089 53.7054 42.7383 53.6861 42.5695C53.6669 42.4008 53.5968 42.2418 53.4852 42.1138"
+                          stroke-miterlimit="10"></path>
+                        <path
+                          d="M18.332 48.3936L18.7626 48.8242C21.864 51.9155 25.5694 54.3342 29.6475 55.9292C29.7459 55.9707 29.8517 55.992 29.9585 55.992C30.0653 55.992 30.1711 55.9707 30.2695 55.9292C34.4568 54.2862 38.2512 51.7797 41.4055 48.573"
+                          stroke-width="1.6" stroke-miterlimit="10"></path>
+                        <path
+                          d="M48.2955 38.3938C49.6246 35.4627 50.6544 32.4051 51.3696 29.2673C52.7952 23.1364 53.2832 16.8248 52.8169 10.5477C52.7984 10.3541 52.713 10.1731 52.5755 10.0356C52.438 9.89805 52.2569 9.8127 52.0634 9.79414C46.5949 9.19992 41.2829 7.60227 36.394 5.08135C34.3091 4.04128 32.3336 2.79507 30.497 1.36136C30.3443 1.23388 30.1517 1.16406 29.9527 1.16406C29.7538 1.16406 29.5612 1.23388 29.4085 1.36136C23.1218 6.05939 15.6832 8.97284 7.87804 9.79414C7.68314 9.81228 7.50048 9.8972 7.36099 10.0345C7.22149 10.1718 7.13372 10.3531 7.11251 10.5477C6.64626 16.8248 7.13424 23.1364 8.55983 29.2673C9.24364 32.2413 10.2048 35.1447 11.4306 37.9393"
+                          stroke-width="1.6" stroke-miterlimit="10"></path>
+                        <path
+                          d="M47.5291 14.818C47.5058 14.6242 47.4173 14.4441 47.2782 14.3072C47.1392 14.1703 46.9577 14.0847 46.7636 14.0644C40.854 13.4403 35.2199 11.2428 30.4483 7.70096C30.2956 7.57348 30.103 7.50366 29.904 7.50366C29.7051 7.50366 29.5125 7.57348 29.3598 7.70096C24.5945 11.2543 18.9572 13.453 13.0445 14.0644C12.8517 14.0852 12.6719 14.1712 12.5348 14.3083C12.3977 14.4454 12.3116 14.6252 12.2909 14.818C11.9317 19.6306 12.3027 24.47 13.3914 29.1716C14.2998 33.3178 15.9929 37.252 18.3793 40.7622C21.154 44.7672 25.0605 47.8533 29.599 49.6256C29.6975 49.667 29.8032 49.6884 29.91 49.6884C30.0168 49.6884 30.1226 49.667 30.221 49.6256C34.7577 47.8501 38.6634 44.7647 41.4408 40.7622C43.8279 37.2538 45.5173 33.3187 46.4167 29.1716C47.505 24.4699 47.88 19.6312 47.5291 14.818Z"
+                          stroke-miterlimit="10"></path>
+                        <path
+                          d="M27.5067 35.858C27.2066 35.8585 26.9095 35.7996 26.6323 35.6846C26.3552 35.5696 26.1035 35.4009 25.8919 35.1882L20.7007 29.997C20.2756 29.567 20.0371 28.9868 20.0371 28.3822C20.0371 27.7776 20.2756 27.1973 20.7007 26.7674C21.1306 26.3423 21.7108 26.1039 22.3155 26.1039C22.9201 26.1039 23.5003 26.3423 23.9303 26.7674L27.5187 30.3558L36.2744 21.6001C36.4857 21.3867 36.7372 21.2173 37.0144 21.1017C37.2915 20.9861 37.5889 20.9266 37.8892 20.9266C38.1895 20.9266 38.4868 20.9861 38.764 21.1017C39.0411 21.2173 39.2927 21.3867 39.504 21.6001C39.9284 22.028 40.1665 22.6062 40.1665 23.2089C40.1665 23.8116 39.9284 24.3898 39.504 24.8177L29.1334 35.2002C28.7045 35.6276 28.1242 35.8683 27.5187 35.87L27.5067 35.858Z"
+                          stroke-width="1.6" stroke-miterlimit="10"></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_2667_4415">
+                          <rect width="60" height="60" fill="white"></rect>
+                        </clipPath>
+                      </defs>
+                    </svg>
+
+                  </button><button class="main__bottom-item">
+                    <div class="main__bottom-content">
+                      <h4 class="main__bottom-title">Готовый сайт конференции</h4>
+                      <a href="#" class="main__bottom-link">out_it.studio</a>
+                    </div>
+                    <svg class="main__bottom-icon" width="60" height="61" viewBox="0 0 60 61"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M4.19337 47.0677V11.4489C4.1925 11.1018 4.26088 10.758 4.3945 10.4377C4.52813 10.1174 4.72432 9.82697 4.97157 9.58342C5.2151 9.34011 5.50418 9.14717 5.82229 9.0156C6.1404 8.88404 6.48134 8.81643 6.82559 8.81665H52.4084C53.319 8.81665 54.1923 9.17837 54.8361 9.82224C55.48 10.4661 55.8417 11.3394 55.8417 12.25V47.0677"
+                        stroke-width="1.6" stroke-miterlimit="10"></path>
+                      <path d="M50.1186 47.0677V18.3855H9.9375V47.0677" stroke-miterlimit="10"></path>
+                      <path
+                        d="M1.01146 47.0676H59V48.2922C58.995 49.3227 58.5838 50.3096 57.8556 51.0388C57.1264 51.767 56.1394 52.1782 55.1089 52.1833H4.89111C3.8606 52.1782 2.87362 51.767 2.14444 51.0388C1.41625 50.3096 1.00502 49.3227 1 48.2922L1.01146 47.0676Z"
+                        stroke-width="1.6" stroke-miterlimit="10"></path>
+                      <path d="M55.842 14.8505H4.77734" stroke-miterlimit="10"></path>
+                      <path
+                        d="M24.643 34.2258C24.4672 34.0578 24.2338 33.9636 23.9907 33.9625C23.8718 33.9621 23.754 33.9852 23.644 34.0303C23.534 34.0755 23.434 34.1419 23.3498 34.2258L22.0108 35.4732L20.0767 33.5391C19.901 33.3711 19.6675 33.2769 19.4244 33.2759C19.3055 33.2755 19.1877 33.2985 19.0777 33.3437C18.9678 33.3888 18.8678 33.4552 18.7835 33.5391L15.293 36.9724V38.1168C15.2929 38.285 15.3263 38.4516 15.3911 38.6068C15.4559 38.762 15.5509 38.9027 15.6706 39.0209C15.7894 39.1431 15.9318 39.2396 16.0893 39.3045C16.2468 39.3695 16.4159 39.4015 16.5862 39.3986H25.2038C25.3764 39.4065 25.5485 39.3752 25.7073 39.307C25.8619 39.2332 26.0046 39.1368 26.1308 39.0209C26.2494 38.8927 26.346 38.7458 26.4169 38.5861C26.485 38.4273 26.5163 38.2551 26.5084 38.0825V35.7707L24.643 34.2258Z"
+                        stroke-miterlimit="10"></path>
+                      <path
+                        d="M23.1794 31.296C23.4205 31.3002 23.6568 31.2282 23.8546 31.09C24.0619 30.9605 24.2224 30.768 24.3124 30.5407C24.4032 30.3157 24.427 30.0694 24.3811 29.8312C24.332 29.5918 24.2124 29.3726 24.0377 29.2017C23.8662 29.0301 23.6468 28.9144 23.4083 28.8698C23.1701 28.8239 22.9237 28.8477 22.6987 28.9385C22.4714 29.0285 22.2789 29.1889 22.1494 29.3963C22.0131 29.5992 21.9413 29.8385 21.9434 30.0829C21.9474 30.4062 22.0791 30.7147 22.3096 30.9413C22.4241 31.0547 22.5599 31.1445 22.7091 31.2054C22.8584 31.2663 23.0182 31.2971 23.1794 31.296Z"
+                        stroke-miterlimit="10"></path>
+                      <path
+                        d="M24.942 25.8715H16.8623C16.6539 25.87 16.4473 25.9097 16.2544 25.9884C16.0614 26.0671 15.886 26.1832 15.7381 26.33C15.5903 26.4768 15.4729 26.6514 15.3928 26.8438C15.3127 27.0361 15.2715 27.2424 15.2715 27.4508V37.8881C15.2715 38.31 15.4391 38.7146 15.7374 39.0129C16.0358 39.3112 16.4404 39.4788 16.8623 39.4788H24.942C25.1503 39.4788 25.3567 39.4376 25.549 39.3575C25.7414 39.2774 25.916 39.1601 26.0628 39.0122C26.2096 38.8643 26.3257 38.6889 26.4044 38.496C26.4831 38.303 26.5228 38.0964 26.5213 37.8881V27.4508C26.5213 27.0319 26.3549 26.6303 26.0587 26.3341C25.7625 26.0379 25.3608 25.8715 24.942 25.8715Z"
+                        stroke-miterlimit="10"></path>
+                      <path d="M30.5957 27.0502H45.3589" stroke-miterlimit="10"></path>
+                      <path d="M30.5957 30.7925H45.3589" stroke-miterlimit="10"></path>
+                      <path d="M30.5957 34.5463H45.3589" stroke-miterlimit="10"></path>
+                      <path d="M30.5957 38.2886H45.3589" stroke-miterlimit="10"></path>
+                    </svg>
+                  </button>
+                </div>
+              </aside>
+              <div class="inside-page__content">
+                <div class="sharing inside-page__sharing">
+                  <div class="sharing__row sharing__row--flex-end">
+                    <div class="sharing__title">
+                      Поделиться:
+                    </div>
+                    <button class="sharing__button" data-sharer="vk"
+                      data-caption="Sharer.js is the ultimate sharer js lib" data-title="Checkout Sharer.js!"
+                      data-url="https://ellisonleao.github.io/sharer.js/">
+                      <svg class="">
+                        <use xlink:href="img/sprite.svg#vk"></use>
+                      </svg>
+                    </button>
+                    <button class="sharing__button" data-sharer="telegram" data-title="Checkout Sharer.js!"
+                      data-url="https://ellisonleao.github.io/sharer.js/">
+                      <svg class="">
+                        <use xlink:href="img/sprite.svg#telegram"></use>
+                      </svg>
+                    </button>
+                    <button class="sharing__button" data-sharer="okru"
+                      data-url="https://ellisonleao.github.io/sharer.js/" data-title="Checkout Sharer.js!">
+                      <svg class="">
+                        <use xlink:href="img/sprite.svg#ok"></use>
+                      </svg>
+                    </button>
+                  </div>
+
+                </div>
+                <div class="inside-page__text-content text-content">
+                  <p>
+                    Ассоциация «Совет муниципальных образований федерального округа OUT IT была учреждена с целью
+                    координации действий органов местного самоуправления в федеральном округе OUT IT.
+                  </p>
+                  <p>
+                    10 января 2008 г. инициативная группа из представителей от органов местного самоуправления 5
+                    районов провела первое заседание, на котором было принято решение о создании координирующего
+                    центра для объединения равноправных муниципальных образований.
+                  </p>
+                  <p>
+                    22 января 2008 г. состоялась Учредительная конференция Ассоциации муниципальных образований
+                    федерального округа OUT IT, в которой приняли участие 15 представителей и уполномоченных от
+                    муниципальных образований. На конференции было принято решение создать Ассоциацию муниципальных
+                    образований федерального округа OUT IT в целях развития местного самоуправления, были утверждены
+                    Устав Ассоциации, текст Учредительного договора, избраны руководящие органы Ассоциации — Совет и
+                    Ревизионная комиссия.
+                  </p>
+                  <p>
+                    14 марта 2008 г. состоялось подписание Учредительного договора.
+                  </p>
+                  <p>
+                    25 мая 2008 г. Ассоциация получила Свидетельство о государственной регистрации юридического лица.
+                  </p>
+                  <p>
+                    На сегодняшний день в Ассоциацию входят 16 муниципальных образований федеральном округе OUT IT.
+                  </p>
+                </div>
+                <div class="main__left-documents inside-page__docs">
+                  <div class="main__documents-content">
+                    <h3 class="main__documents-title" id="documents">
+                      Документы
+                    </h3>
+
+                  </div>
+                  <div class="main__documents-row">
+                    <a href="#" class="main__documents-item">
+                      <div class="main__documents-left">
+                        <img src="img/pdf.svg" alt="pdf.file" class="main__documents-img">
+                        <div class="main__documents-desc">Свидетельство о постановке на учёт юридического лица</div>
+                      </div>
+                      <div class="main__documents-right">
+                        <div class="main__documents-num">55.32 КБ</div>
+                        <div class="main__documents-download">
+                          <svg class="main__documents-svg">
+                            <use xlink:href="img/sprite.svg#download"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="#" class="main__documents-item">
+                      <div class="main__documents-left">
+                        <img src="img/pdf.svg" alt="pdf.file" class="main__documents-img">
+                        <div class="main__documents-desc">Свидетельство о постановке на учёт юридического лица</div>
+                      </div>
+                      <div class="main__documents-right">
+                        <div class="main__documents-num">55.32 КБ</div>
+                        <div class="main__documents-download">
+                          <svg class="main__documents-svg">
+                            <use xlink:href="img/sprite.svg#download"></use>
+                          </svg>
+                        </div>
+                      </div>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+  <div class="container">
+    <div class="footer__wrapper">
+      <div class="footer__for-user">
+        <p>Для пользователя</p>
+        <ul class="footer__list-info">
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">О совете</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Новости</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Объявления</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Деятельность</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Документы</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Обращения граждан</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Пресс-центр</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Контакты</a>
+          </li>
+          <li class="footer__list-item">
+            <a href="" class="footer__list-link">Информационные ресурсы</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__contacts">
+        <p>Контакты</p>
+        <div class="footer__contacts-content">
+          <div class="footer__contacts-item">
+            <svg class="footer__contacts-icon">
+              <use xlink:href="img/sprite.svg#geoloc"></use>
+            </svg>
+            <a href="#" class="footer__contacts-desc">Москва, ул. Карла Маркса, д. 37, корп. 1</a>
+          </div>
+          <div class="footer__contacts-item">
+            <svg class="footer__contacts-icon">
+              <use xlink:href="img/sprite.svg#phone"></use>
+            </svg>
+            <a href="tel:74958008070" class="footer__contacts-desc">+ 7 (495) 800 80 70</a>
+          </div>
+          <div class="footer__contacts-item">
+            <svg class="footer__contacts-icon">
+              <use xlink:href="img/sprite.svg#mail"></use>
+            </svg>
+            <a href="mailto:out_it@gmail.com" class="footer__contacts-desc">out_it@gmail.com</a>
+          </div>
+          <div class="footer__contacts-social">
+            <a href="#" class="footer__social-btn">
+              <svg class="footer__social-icon">
+                <use xlink:href="img/sprite.svg#vk"></use>
+              </svg>
+            </a>
+            <a href="#" class="footer__social-btn">
+              <svg class="footer__social-icon">
+                <use xlink:href="img/sprite.svg#telegram"></use>
+              </svg>
+            </a>
+            <a href="#" class="footer__social-btn">
+              <svg class="footer__social-icon">
+                <use xlink:href="img/sprite.svg#ok"></use>
+              </svg>
+            </a>
+            <a href="#" class="footer__social-btn">
+              <svg class="footer__social-icon">
+                <use xlink:href="img/sprite.svg#rutube"></use>
+              </svg>
+            </a>
+            <a href="#" class="footer__social-btn">
+              <svg class="footer__social-icon">
+                <use xlink:href="img/sprite.svg#youtube"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__feedback">
+        <p class="footer__feedback-desc">Обратная связь</p>
+        <p class="footer__feedback-text">Если у вас есть вопросы, задайте их через специальную форму</p>
+        <button class="footer__button footer__feedback-button modal-button" data-modal="modal2">
+          <svg class="footer__feedback-icon">
+            <use xlink:href="img/sprite.svg#write"></use>
+          </svg>
+          <span>Написать нам</span>
+        </button>
+      </div>
+    </div>
+    <div class="footer__copyright">
+      <div class="footer__copyright-content">
+        <div class="footer__copyright-item">
+          <a href="#" class="footer__copyright-link">Политика конфиденциальности</a>
+        </div>
+        <div class="footer__copyright-item">
+          <a href="#" class="footer__copyright-link">Карта сайта</a>
+        </div>
+      </div>
+      <p class="footer__copyright-desc">© 2024 Готовое решение «OUT IT: Сайт совета муниципальных образований». Все
+        права защищены.</p>
+    </div>
+  </div>
+</footer>
+</div>
+<div class="modal-overlay">
+  <div class="modal graph-modal">
+    <div class="graph-modal__container graph-modal__login" role="dialog" aria-modal="true"
+      data-graph-target="loginModal" class="login-modal">
+      <button class="btn-reset js-modal-close graph-modal__close" aria-label="Закрыть модальное окно"></button>
+      <div class="graph-modal__content">
+        <h2 class="graph-modal__title">Авторизация</h2>
+        <form class="login-form">
+          <div class="form__group">
+            <input type="email" placeholder=" " class="form__group-input input-email">
+            <label class="form__pseudoplaceholder" for="email">Email*</label>
+          </div>
+          <div class="form__group">
+            <input type="password" placeholder=" " class="form__group-input input-password">
+            <label class="form__pseudoplaceholder " for="password">Пароль*</label>
+            <div class="form__toggle" id=""></div>
+          </div>
+          <div class="form__links">
+            <a href="#" class="form__links-pas">Забыли пароль?</a>
+          </div>
+          <div class="form__group form__group-check">
+            <input type="checkbox" id="rememberMe" class="form__group-checkbox">
+            <label class="form__group-text" for="rememberMe">Запомнить меня</label>
+          </div>
+          <button class="login-btn" type="submit">Войти</button>
+        </form>
+        <p class="form__register">Если Вы впервые на сайте, пожалуйста, <a href="#" data-pass="modal"
+            class="form__register-link" id="registerLink" data-graph-path="registerModal">Зарегистрируйтесь</a></p>
+      </div>
+    </div>
+    <div class="graph-modal__container graph-modal__register" role="dialog" aria-modal="true"
+      data-graph-target="registerModal" id="registerModal">
+      <button class="btn-reset js-modal-close graph-modal__close" aria-label="Закрыть модальное окно"></button>
+      <div class="graph-modal__content">
+        <h2 class="graph-modal__title">Регистрация</h2>
+        <form id="registerForm" class="register-form">
+          <div class="form__group">
+            <input type="text" id="name" placeholder=" " class="form__group-input input-name">
+            <label class="form__pseudoplaceholder" for="name">ФИО*</label>
+          </div>
+          <div class="form__group">
+            <input type="tel" id="phone" placeholder=" " class="form__group-input input-tel">
+            <label class="form__pseudoplaceholder" for="phone">Телефон*</label>
+          </div>
+          <div class="form__group">
+            <input type="email" placeholder=" " class="form__group-input input-email">
+            <label class="form__pseudoplaceholder" for="email">Email*</label>
+          </div>
+          <div class="form__group">
+            <input type="password" placeholder=" " class="form__group-input input-password">
+            <label class="form__pseudoplaceholder" for="password">Пароль*</label>
+            <div class="form__toggle"></div>
+          </div>
+          <div class="form__group">
+            <input type="password" placeholder=" " class="form__group-input input-password-again">
+            <label class="form__pseudoplaceholder" for="password">Пароль еще раз*</label>
+            <div class="form__toggle"></div>
+          </div>
+          <div class="form__item">
+            <p class="form__item-text">Пароль должен быть не менее 8 и состоять из букв латинского алфавита (A-z),
+              арабских цифр (0-9) и специальных символов</p>
+          </div>
+          <div class="form__group form__group-check">
+            <input type="checkbox" id="rememberMe2" class="form__group-checkbox">
+            <div class="form__group-content">
+              <p class="form__desc">Я согласен с </p>
+              <a href="#" class="form__group-link">политикой конфиденциальности</a>
+            </div>
+          </div>
+          <button class="login-btn" type="submit">Зарегистрироваться</button>
+        </form>
+        <p class="form__register">У Вас уже есть аккаунт? <a href="#" class="form__register-link" id="loginLink"
+            data-graph-path="loginModal" data-pass="modal">Авторизоваться</a></p>
+      </div>
+    </div>
+    <div class="graph-modal__container graph-modal__city" data-graph-target="header__city">
+      <button class="btn-reset js-modal-close graph-modal__close" aria-label="Закрыть модальное окно"></button>
+      <div class="graph-modal__content">
+        <h2 class="graph-modal__title">Выберите город</h2>
+        <div class="city__search">
+          <input type="text" class="city__search-input" placeholder="Ваш город">
+          <label class="city__search-placeholder" for="text">Ваш город
+          </label>
+          <button class="city__search-button">
+            <svg class="city__search-icon">
+              <use xlink:href="img/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+        <a href="#" class="auto-detect-location city__search-geo">
+          <svg class="header__info-icon">
+            <use xlink:href="img/sprite.svg#geo"></use>
+          </svg>
+          <span>Определить автоматически</span>
+        </a>
+        <div class="city__list">
+          <ul>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Уфа</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Москва</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Санкт-Петербург</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Екатеринбург</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Краснодар</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Нижний Новгород</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Новосибирск</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Самара</span>
+            </li>
+            <li class="city__list-item">
+              <svg class="city__item-icon">
+                <use xlink:href="img/sprite.svg#search"></use>
+              </svg>
+              <span>Челябинск</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</body>
+
+</html>

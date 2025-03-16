@@ -1,0 +1,73 @@
+.inside-page {
+  padding: 60px 0 100px;
+  @include tablet() {
+    padding: 60px 0;
+  }
+  &__title {
+    margin: 0 0 20px 0;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 120%;
+    color: var(--black);
+    @include tablet() {
+      margin-bottom: 0;
+    }
+  }
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    @include tablet() {
+      flex-direction: column;
+      gap: 30px;
+    }
+    @include small-tablet() {
+      gap: 20px;
+    }
+  }
+  &__left {
+    max-width: 357px;
+    width: 100%;
+    flex-shrink: 0;
+    @include big-desktop() {
+      max-width: 322px;
+    }
+    @include tablet() {
+      max-width: 100%;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  &__sharing {
+    margin-bottom: 30px;
+    @include tablet() {
+      margin-top: 40px;
+      margin-bottom: 0;
+    }
+  }
+  &__main-links {
+    margin-top: 60px;
+    @include tablet() {
+      display: none;
+    }
+  }
+  &__docs {
+    margin-top: 100px;
+    @include tablet() {
+      margin-top: 40px;
+    }
+  }
+  &__text-content {
+    @include tablet() {
+      order: -1;
+    }
+  }
+  &__category-menu {
+    @include tablet() {
+      display: none;
+    }
+  }
+}

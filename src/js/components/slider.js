@@ -85,9 +85,9 @@ let swiper2 = new Swiper(".news__swiper", {
     // 768: {
     //   slidesPerView: 4,
     // },
-    1024: {
-      slidesPerView: 3,
-    },
+    // 1024: {
+    //   slidesPerView: 3,
+    // },
   },
   navigation: {
     nextEl: ".news__btn-next",

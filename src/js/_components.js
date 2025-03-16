@@ -6,3 +6,5 @@ import "./components/menu.js";
 import "./components/scroll.js";
 import "./components/burger.js";
 import "./components/valid.js";
+import "./components/inside-menu.js";
+import "sharer.js";

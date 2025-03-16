@@ -1,0 +1,27 @@
+.sharing {
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    &--flex-end {
+      justify-content: flex-end;
+    }
+  }
+  &__title {
+    font-size: 16px;
+    line-height: 140%;
+    color: var(--grey-dark);
+  }
+  &__button {
+    outline: 0;
+    cursor: pointer;
+    background-color: transparent;
+    height: 18px;
+    width: 18px;
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: #476bf0;
+    }
+  }
+}
